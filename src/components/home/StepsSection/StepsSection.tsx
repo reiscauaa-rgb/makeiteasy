@@ -83,7 +83,7 @@ export default function StepsSection() {
       ref={sectionRef}
     >
       <div className="container">
-        <div className={`${styles.header} ${hasStarted ? styles.headerVisible : ''}`}>
+        <div className={styles.header}>
           <p className={styles.intro}>
             Seu caminho para estudar nos EUA pode ser mais fácil conosco!
           </p>
@@ -94,7 +94,7 @@ export default function StepsSection() {
         </div>
 
         {/* The 5 Passos illustration */}
-        <div className={`${styles.stepsImageWrap} ${hasStarted ? styles.stepsImageVisible : ''}`}>
+        <div className={styles.stepsImageWrap}>
           <Image
             src="/images/5 passos.png"
             alt="Ilustração dos 5 passos do processo de assessoria"
@@ -105,7 +105,7 @@ export default function StepsSection() {
         </div>
 
         {/* Animated steps grid */}
-        <ol className={styles.steps}>
+        <ol className={`${styles.steps} ${hasStarted ? styles.stepsActive : ''}`}>
           {steps.map((step, idx) => {
             const isVisible = idx < visibleCount;
             const isLatest = idx === visibleCount - 1;
