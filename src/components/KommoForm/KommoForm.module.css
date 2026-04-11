@@ -1,0 +1,141 @@
+.card {
+  position: relative;
+  background: var(--color-white);
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* Premium border via gradient */
+  border: 1px solid rgba(91, 45, 166, 0.12);
+
+  /* Layered shadow for depth */
+  box-shadow:
+    0 0 0 4px rgba(255, 107, 43, 0.06),
+    0 8px 32px rgba(91, 45, 166, 0.14),
+    0 32px 64px rgba(91, 45, 166, 0.08);
+}
+
+/* Top accent bar */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-orange), var(--color-purple-light), var(--color-orange));
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  z-index: 2;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Card header */
+.cardHeader {
+  padding: var(--space-6) var(--space-6) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  border-bottom: 1px solid rgba(91, 45, 166, 0.07);
+  background: linear-gradient(135deg, #fafafa 0%, #f5f0ff 100%);
+}
+
+.cardIconWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--color-orange), #ff9a5c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(255, 107, 43, 0.35);
+}
+
+.cardHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cardTitle {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-purple-dark);
+  line-height: 1.2;
+}
+
+.cardSubtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.secureDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+}
+
+/* Form body */
+.cardBody {
+  padding: var(--space-4) var(--space-6) 0;
+  position: relative;
+}
+
+/* The Kommo script injects an iframe — make it fill the card */
+.cardBody :global(#amoforms_iframe_1551255) {
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none !important;
+  display: block !important;
+}
+
+/* Watermark overlay — covers the last ~36px of the iframe */
+.watermarkBlock {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: var(--color-white);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Card footer */
+.cardFooter {
+  padding: var(--space-3) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: #fafafa;
+  border-top: 1px solid rgba(91, 45, 166, 0.06);
+}
+
+.footerText {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footerText svg {
+  color: #22c55e;
+  flex-shrink: 0;
+}
+
+/* Wrapper for the script injection */
+.formMount {
+  min-height: 420px;
+  position: relative;
+}
