@@ -20,7 +20,7 @@
 
 .heroBgImg {
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   opacity: 1;
 }
 
@@ -132,8 +132,8 @@
 }
 
 .photo {
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* ── FAQ list ── */
@@ -294,9 +294,9 @@
   }
 
   .photoWrap {
-    max-width: 380px;
+    max-width: 320px;
     margin: 0 auto;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/4;
   }
 
   /* On tablet, photo always comes first in blockB */
@@ -356,8 +356,9 @@
   }
 
   .photoWrap {
-    max-width: 100%;
-    aspect-ratio: 16/9;
+    max-width: 280px;
+    margin: 0 auto;
+    aspect-ratio: 3/4;
   }
 
   .faqList {
