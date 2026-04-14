@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className={styles.heroBg}>
         <Image
-          src="/images/hero.png"
+          src="/images/hero-bg-v2.png"
           alt=""
           fill
           className={styles.heroBgImg}
@@ -18,22 +18,22 @@ export default function HeroSection() {
       </div>
       <div className={styles.heroOverlay} aria-hidden="true" />
 
-      {/* Floating Decorative Icons */}
-      <span className={`${styles.floatingIcon} ${styles.iconPlane}`} aria-hidden="true">✈️</span>
+      {/* Floating Decorative Icons (Comentados pois a nova imagem de fundo já os contém) */}
+      {/* <span className={`${styles.floatingIcon} ${styles.iconPlane}`} aria-hidden="true">✈️</span>
       <span className={`${styles.floatingIcon} ${styles.iconCap}`}   aria-hidden="true">🎓</span>
-      <span className={`${styles.floatingIcon} ${styles.iconStar}`}  aria-hidden="true">⭐</span>
+      <span className={`${styles.floatingIcon} ${styles.iconStar}`}  aria-hidden="true">⭐</span> */}
 
       {/* Main Content */}
       <div className={styles.heroContent}>
-        {/* Left image — Statue of Liberty */}
+        {/* Left image — Statue of Liberty (Comentada pois a nova imagem de fundo já a contém) */}
         <div className={styles.heroImgLeft}>
-          <Image
+          {/* <Image
             src="/images/hero esquerda.png"
             alt="Estátua da Liberdade"
             width={380}
             height={480}
             priority
-          />
+          /> */}
         </div>
 
         {/* Center Text */}
@@ -74,15 +74,15 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right image — Diploma */}
+        {/* Right image — Diploma (Comentada pois a nova imagem de fundo já o contém) */}
         <div className={styles.heroImgRight}>
-          <Image
+          {/* <Image
             src="/images/hero direta.png"
             alt="Formatura — conquista do diploma americano"
             width={380}
             height={480}
             priority
-          />
+          /> */}
         </div>
       </div>
 
