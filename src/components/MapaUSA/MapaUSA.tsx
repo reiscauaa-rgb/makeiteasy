@@ -11,7 +11,6 @@ type University = {
   city: string;
   name: string;
   courses: string;
-  price: string;
   coordinates: [number, number]; // [longitude, latitude]
 };
 
@@ -20,49 +19,49 @@ const geoUrl = '/states-10m.json';
 
 const universities: University[] = [
   // California
-  { id: 'ca-irvine',    state: 'California', city: 'Irvine',         name: 'Westcliff University',          courses: 'Negócios / Tecnologia',            price: 'a partir de $1.534/mês', coordinates: [-117.82, 33.68] },
-  { id: 'ca-sf',        state: 'California', city: 'San Francisco',   name: 'Golden Gate University',        courses: 'Negócios / Tecnologia / Direito',   price: 'a partir de $924/mês',   coordinates: [-122.42, 37.77] },
-  { id: 'ca-stockton',  state: 'California', city: 'Stockton',        name: 'Humphreys University',          courses: 'Direito / Negócios / Educação',     price: 'a partir de $375/unidade', coordinates: [-121.29, 37.95] },
+  { id: 'ca-irvine',    state: 'California', city: 'Irvine',         name: 'Westcliff University',          courses: 'Negócios / Tecnologia',            coordinates: [-117.82, 33.68] },
+  { id: 'ca-sf',        state: 'California', city: 'San Francisco',   name: 'Golden Gate University',        courses: 'Negócios / Tecnologia / Direito',  coordinates: [-122.42, 37.77] },
+  { id: 'ca-stockton',  state: 'California', city: 'Stockton',        name: 'Humphreys University',          courses: 'Direito / Negócios / Educação',    coordinates: [-121.29, 37.95] },
   
-  // New York Area (Espalhados)
-  { id: 'ny-brooklyn',  state: 'New York',   city: 'Brooklyn',        name: 'St. Francis College',           courses: 'Negócios / Ciências da Saúde',      price: 'a partir de $2.542/mês', coordinates: [-73.94, 40.67] },
-  { id: 'ny-bronx',     state: 'New York',   city: 'Bronx',           name: 'Monroe University',             courses: 'Negócios / Hospitalidade / TI',     price: 'a partir de $1.402/mês', coordinates: [-72.8, 41.5] }, // Movido NE
-  { id: 'ny-garden',    state: 'New York',   city: 'Garden City',     name: 'Adelphi University',            courses: 'Negócios / Saúde / STEM',           price: 'a partir de $4.342/mês', coordinates: [-72.1, 40.2] }, // Movido E
+  // New York Area
+  { id: 'ny-brooklyn',  state: 'New York',   city: 'Brooklyn',        name: 'St. Francis College',           courses: 'Negócios / Ciências da Saúde',     coordinates: [-73.94, 40.67] },
+  { id: 'ny-bronx',     state: 'New York',   city: 'Bronx',           name: 'Monroe University',             courses: 'Negócios / Hospitalidade / TI',    coordinates: [-72.8, 41.5] },
+  { id: 'ny-garden',    state: 'New York',   city: 'Garden City',     name: 'Adelphi University',            courses: 'Negócios / Saúde / STEM',          coordinates: [-72.1, 40.2] },
   
   // Indiana
-  { id: 'in-angola',    state: 'Indiana',    city: 'Angola',          name: 'Trine University',              courses: 'Engenharia / Computação / Saúde',   price: 'a partir de $3.071/mês', coordinates: [-85.00, 41.63] },
-  { id: 'in-anderson',  state: 'Indiana',    city: 'Anderson',        name: 'Anderson University',           courses: 'Negócios / Enfermagem / Cibersegurança', price: 'a partir de $1.956/mês', coordinates: [-85.67, 40.10] },
+  { id: 'in-angola',    state: 'Indiana',    city: 'Angola',          name: 'Trine University',              courses: 'Engenharia / Computação / Saúde',  coordinates: [-85.00, 41.63] },
+  { id: 'in-anderson',  state: 'Indiana',    city: 'Anderson',        name: 'Anderson University',           courses: 'Negócios / Enfermagem / Cibersegurança', coordinates: [-85.67, 40.10] },
   
   // Missouri
-  { id: 'mo-stlouis',   state: 'Missouri',   city: 'St. Louis',       name: 'Washington University in St. Louis', courses: 'Cursos variados',            price: 'a partir de $5.687/mês', coordinates: [-90.19, 38.62] },
+  { id: 'mo-stlouis',   state: 'Missouri',   city: 'St. Louis',       name: 'Washington University in St. Louis', courses: 'Cursos variados',           coordinates: [-90.19, 38.62] },
   // Kansas
-  { id: 'ks-ottawa',    state: 'Kansas',     city: 'Ottawa',          name: 'Ottawa University',             courses: 'Negócios / Counseling / Saúde',     price: 'a partir de $2.658/mês', coordinates: [-95.26, 38.61] },
+  { id: 'ks-ottawa',    state: 'Kansas',     city: 'Ottawa',          name: 'Ottawa University',             courses: 'Negócios / Counseling / Saúde',    coordinates: [-95.26, 38.61] },
   // Arizona
-  { id: 'az-surprise',  state: 'Arizona',    city: 'Surprise',        name: 'Ottawa University',             courses: 'Negócios / Counseling / Saúde',     price: 'a partir de $2.658/mês', coordinates: [-112.36, 33.62] },
+  { id: 'az-surprise',  state: 'Arizona',    city: 'Surprise',        name: 'Ottawa University',             courses: 'Negócios / Counseling / Saúde',    coordinates: [-112.36, 33.62] },
   // Wisconsin
-  { id: 'wi-brookfield',state: 'Wisconsin',  city: 'Brookfield',      name: 'Ottawa University',             courses: 'Negócios / Educação / Counseling',  price: 'a partir de $998/mês',   coordinates: [-88.10, 43.06] },
+  { id: 'wi-brookfield',state: 'Wisconsin',  city: 'Brookfield',      name: 'Ottawa University',             courses: 'Negócios / Educação / Counseling', coordinates: [-88.10, 43.06] },
   // Pennsylvania
-  { id: 'pa-harrisburg',state: 'Pennsylvania', city: 'Harrisburg',    name: 'Harrisburg University',         courses: 'STEM / Analytics / Computer Science', price: 'a partir de $2.050/mês', coordinates: [-76.88, 40.27] },
+  { id: 'pa-harrisburg',state: 'Pennsylvania', city: 'Harrisburg',    name: 'Harrisburg University',         courses: 'STEM / Analytics / Computer Science', coordinates: [-76.88, 40.27] },
   // Kentucky
-  { id: 'ky-wmsburg',   state: 'Kentucky',   city: 'Williamsburg',    name: 'University of the Cumberlands', courses: 'TI / Negócios / Educação',          price: 'a partir de $823/mês',   coordinates: [-84.16, 36.74] },
+  { id: 'ky-wmsburg',   state: 'Kentucky',   city: 'Williamsburg',    name: 'University of the Cumberlands', courses: 'TI / Negócios / Educação',         coordinates: [-84.16, 36.74] },
   
-  // Illinois (Espalhados)
-  { id: 'il-lisle',     state: 'Illinois',   city: 'Lisle',           name: 'Benedictine University',        courses: 'Negócios / Saúde / Cursos variados', price: 'a partir de $3.288/mês', coordinates: [-89.2, 41.2] },
-  { id: 'il-chicago',   state: 'Illinois',   city: 'Chicago',         name: 'National Louis University',     courses: 'Educação / Negócios',              price: 'a partir de $1.016/mês', coordinates: [-87.62, 41.87] },
+  // Illinois
+  { id: 'il-lisle',     state: 'Illinois',   city: 'Lisle',           name: 'Benedictine University',        courses: 'Negócios / Saúde / Cursos variados', coordinates: [-89.2, 41.2] },
+  { id: 'il-chicago',   state: 'Illinois',   city: 'Chicago',         name: 'National Louis University',     courses: 'Educação / Negócios',              coordinates: [-87.62, 41.87] },
   
-  // Texas (Espalhados)
-  { id: 'tx-fw',        state: 'Texas',      city: 'Fort Worth',      name: 'Texas Wesleyan University',     courses: 'Negócios / Saúde / Direito',        price: 'a partir de $2.970/mês', coordinates: [-98.5, 32.2] },
-  { id: 'tx-dallas',    state: 'Texas',      city: 'Dallas',          name: 'Westcliff University',          courses: 'Negócios / Tecnologia (pós)',       price: 'a partir de $1.228/mês', coordinates: [-96.0, 33.3] },
+  // Texas
+  { id: 'tx-fw',        state: 'Texas',      city: 'Fort Worth',      name: 'Texas Wesleyan University',     courses: 'Negócios / Saúde / Direito',       coordinates: [-98.5, 32.2] },
+  { id: 'tx-dallas',    state: 'Texas',      city: 'Dallas',          name: 'Westcliff University',          courses: 'Negócios / Tecnologia (pós)',      coordinates: [-96.0, 33.3] },
   
-  // DC/Virginia Area (Espalhados)
-  { id: 'dc-wash',      state: 'DC',         city: 'Washington D.C.', name: 'University of the Potomac',     courses: 'Gestão / TI / Negócios',           price: 'a partir de $1.258/mês', coordinates: [-77.03, 38.90] },
-  { id: 'va-falls',     state: 'Virginia',   city: 'Falls Church',    name: 'University of the Potomac',     courses: 'Gestão / TI / Negócios',           price: 'a partir de $1.258/mês', coordinates: [-78.5, 37.8] },
+  // DC/Virginia Area
+  { id: 'dc-wash',      state: 'DC',         city: 'Washington D.C.', name: 'University of the Potomac',     courses: 'Gestão / TI / Negócios',          coordinates: [-77.03, 38.90] },
+  { id: 'va-falls',     state: 'Virginia',   city: 'Falls Church',    name: 'University of the Potomac',     courses: 'Gestão / TI / Negócios',          coordinates: [-78.5, 37.8] },
   
   // Other States
-  { id: 'fl-orlando',   state: 'Florida',    city: 'Orlando',         name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',            price: 'a partir de $550/mês',   coordinates: [-81.37, 28.53] },
-  { id: 'nv-lv',        state: 'Nevada',     city: 'Las Vegas',       name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',            price: 'a partir de $550/mês',   coordinates: [-115.13, 36.16] },
-  { id: 'ut-provo',     state: 'Utah',       city: 'Provo',           name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',            price: 'a partir de $550/mês',   coordinates: [-111.65, 40.23] },
-  { id: 'nj-wny',       state: 'New Jersey', city: 'West New York',   name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',            price: 'a partir de $550/mês',   coordinates: [-75.0, 39.5] }, // Afastado de NY
+  { id: 'fl-orlando',   state: 'Florida',    city: 'Orlando',         name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',           coordinates: [-81.37, 28.53] },
+  { id: 'nv-lv',        state: 'Nevada',     city: 'Las Vegas',       name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',           coordinates: [-115.13, 36.16] },
+  { id: 'ut-provo',     state: 'Utah',       city: 'Provo',           name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',           coordinates: [-111.65, 40.23] },
+  { id: 'nj-wny',       state: 'New Jersey', city: 'West New York',   name: 'UCEDA School',                  courses: 'Inglês Intensivo / ESL',           coordinates: [-75.0, 39.5] },
 ];
 
 /* ─── Component ──────────────────────────────────── */
@@ -128,7 +127,10 @@ export default function MapaUSA() {
           <div className={styles.panelContent}>
             <div className={styles.panelInfoMain}>
               <p className={styles.panelState}>{active.state}</p>
-              <p className={styles.panelCity}>📍 {active.city}</p>
+              <p className={styles.panelCity}>
+                <span className={styles.pinEmoji}>📍</span>
+                <span>{active.city}</span>
+              </p>
               <h3 className={styles.panelName}>{active.name}</h3>
             </div>
             
@@ -136,17 +138,11 @@ export default function MapaUSA() {
               <p className={styles.panelLabel}>Áreas de Estudo</p>
               <p className={styles.panelCourses}>{active.courses}</p>
             </div>
-
-            <div className={styles.panelDetailBox}>
-              <p className={styles.panelLabel}>Investimento Estimado</p>
-              <p className={styles.panelPrice}>{active.price}</p>
-            </div>
             
             <button className={styles.closeBtn} onClick={close}>Ocultar</button>
           </div>
         ) : (
           <div className={styles.panelEmpty}>
-            <span className={styles.emptyIcon}>👈</span>
             <p>Selecione um pino no mapa para ver os detalhes da instituição.</p>
           </div>
         )}

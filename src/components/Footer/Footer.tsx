@@ -24,8 +24,8 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="Make It Easy USA"
-                width={100}
-                height={100}
+                width={400}
+                height={400}
                 className={styles.logoImg}
               />
             </Link>

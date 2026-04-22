@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
 
-const faqBlock1 = [
+const allFaqs = [
   {
     q: '1. O que é a Make It Easy USA e como ajudamos você a se tornar um estudante internacional nos EUA?',
     a: 'Somos uma assessoria gratuita que orienta em todo o processo de estudar em universidades parceiras nos EUA. Ajudamos desde a escolha do curso até o início das aulas, com suporte em português e acompanhamento individual.',
@@ -22,9 +22,6 @@ const faqBlock1 = [
     q: '4. Vocês ajudam com o visto estudantil?',
     a: 'Sim, indicamos parceiros especializados que orientam sobre o processo de visto F1 e também sobre troca de status dentro dos EUA. Valores a conferir diretamente com parceiro*.',
   },
-];
-
-const faqBlock2 = [
   {
     q: '5. Quais documentos preciso preparar para aplicar?',
     a: 'Os documentos variam conforme a universidade, mas geralmente incluem histórico escolar, diploma, tradução e comprovação financeira. Nossa equipe orienta cada etapa.',
@@ -41,9 +38,6 @@ const faqBlock2 = [
     q: '8. Posso trabalhar enquanto estudo nos EUA?',
     a: 'Sim! Com o visto F1, é possível trabalhar dentro do campus durante os estudos e fora do campus em programas como CPT e OPT após certo tempo de estudo.',
   },
-];
-
-const faqBlock3 = [
   {
     q: '9. Como funciona o primeiro passo com a Make It Easy USA?',
     a: 'Você nos conta o que está buscando e analisamos juntos se temos uma universidade parceira que combina com seu perfil, seu objetivo e seu bolso. É uma conversa simples, sem compromisso.',
@@ -127,7 +121,7 @@ export default function FAQPage() {
       <div className={styles.pageBody}>
         <div className="container">
 
-          {/* Bloco A — Foto esquerda, Q1-4 direita */}
+          {/* Foto + lista de perguntas lado a lado */}
           <div className={styles.blockA}>
             <ScrollReveal variant="fadeLeft">
               <div className={styles.photoWrap}>
@@ -143,46 +137,12 @@ export default function FAQPage() {
 
             <ScrollReveal variant="fadeRight" delay={200}>
               <ul className={styles.faqList}>
-                {faqBlock1.map((item) => (
+                {allFaqs.map((item) => (
                   <FaqItemComponent key={item.q} q={item.q} a={item.a} />
                 ))}
               </ul>
             </ScrollReveal>
           </div>
-
-          {/* Bloco B — Q5-8 esquerda, Foto direita */}
-          <div className={styles.blockB}>
-            <ScrollReveal variant="fadeLeft">
-              <ul className={styles.faqList}>
-                {faqBlock2.map((item) => (
-                  <FaqItemComponent key={item.q} q={item.q} a={item.a} />
-                ))}
-              </ul>
-            </ScrollReveal>
-
-            <ScrollReveal variant="fadeRight" delay={200}>
-              <div className={styles.photoWrap}>
-                <Image
-                  src="/images/foto faq 2.avif"
-                  alt="Campus universitário nos EUA"
-                  fill
-                  className={styles.photo}
-                  sizes="(max-width: 1024px) 400px, 50vw"
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal variant="fadeUp" delay={100}>
-            <div className={styles.blockC}>
-              <h2 className={styles.blockCTitle}>Como funciona o processo</h2>
-              <ul className={styles.faqList}>
-                {faqBlock3.map((item) => (
-                  <FaqItemComponent key={item.q} q={item.q} a={item.a} />
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
 
           <ScrollReveal variant="fadeUp" delay={100}>
             <div className={styles.bottomCta}>

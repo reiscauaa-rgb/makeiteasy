@@ -12,11 +12,8 @@ export const metadata: Metadata = {
 export default function ContatoPage() {
   return (
     <main>
-      {/* ════════════════════════════════════
-          HERO — Roxo full-screen + curva branca
-          ════════════════════════════════════ */}
       <section className={styles.hero} aria-labelledby="contato-title">
-        {/* Background image — same as Sobre page */}
+        {/* Background image */}
         <div className={styles.heroBg}>
           <Image
             src="/images/hero sobre.avif"
@@ -29,26 +26,30 @@ export default function ContatoPage() {
 
         <div className={styles.heroInner}>
 
-          {/* Imagem flutuante à esquerda */}
-          <div className={styles.heroImageWrap}>
-            <Image
-              src="/images/hero contato flutuante.avif"
-              alt="Ícone de contato"
-              width={300}
-              height={300}
-              className={styles.heroImage}
-              priority
-            />
-          </div>
-
-          {/* Título + CTA */}
+          {/* LEFT — Texto */}
           <div className={styles.heroContent}>
+            <span className={styles.badge}>Assessoria 100% gratuita</span>
+
             <h1 className={styles.heroTitle} id="contato-title">
               Quer saber como podemos<br />
-              te ajudar nesse processo?
+              <span className={styles.heroHighlight}>te ajudar</span> nesse processo?
             </h1>
 
-            <div className={styles.heroActions}>
+            <p className={styles.heroSubtitle}>
+              Preencha o formulário e nossa equipe entrará em contato em breve para apresentar as melhores opções de universidades para o seu perfil.
+            </p>
+
+            <ul className={styles.benefitsList}>
+              <li>✅ Atendimento em português</li>
+              <li>✅ Assessoria sem custo algum</li>
+              <li>✅ Do primeiro contato até o embarque</li>
+            </ul>
+          </div>
+
+          {/* RIGHT — Formulário */}
+          <div className={styles.formWrap}>
+            <div className={styles.formCard}>
+              <p className={styles.formCardTitle}>Fale com a gente</p>
               <KommoForm />
             </div>
           </div>

@@ -68,8 +68,9 @@
 }
 
 .logoImg {
-  width: 100px;
-  height: 100px;
+  width: 400px;
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
   filter: brightness(0) invert(1);
   animation: logoFloat 6s ease-in-out infinite;

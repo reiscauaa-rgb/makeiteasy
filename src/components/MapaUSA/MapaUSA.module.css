@@ -106,20 +106,9 @@
   line-height: 1.5;
 }
 
-.emptyIcon {
-  font-size: 28px;
-  margin-bottom: 8px;
-  animation: floatHand 2s ease-in-out infinite;
-}
-
-@keyframes floatHand {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
 .panelContent {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr auto;
+  grid-template-columns: 1.5fr 1fr auto;
   align-items: center;
   padding: 24px;
   gap: 16px;
@@ -142,13 +131,23 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-orange, #ff6b2b);
-  margin-bottom: -8px;
+  margin-bottom: 6px;
 }
 
 .panelCity {
   font-size: 14px;
   color: #777;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.3;
+}
+
+.pinEmoji {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .panelName {
@@ -181,11 +180,7 @@
   line-height: 1.4;
 }
 
-.panelPrice {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--color-purple-dark);
-}
+
 
 .closeBtn {
   background: transparent;
@@ -219,6 +214,7 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
 
 @media (max-width: 640px) {
   .panelContent {
