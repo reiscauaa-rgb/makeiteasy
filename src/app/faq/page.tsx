@@ -43,6 +43,29 @@ const faqBlock2 = [
   },
 ];
 
+const faqBlock3 = [
+  {
+    q: '9. Como funciona o primeiro passo com a Make It Easy USA?',
+    a: 'Você nos conta o que está buscando e analisamos juntos se temos uma universidade parceira que combina com seu perfil, seu objetivo e seu bolso. É uma conversa simples, sem compromisso.',
+  },
+  {
+    q: '10. Quais opções de universidades vocês apresentam?',
+    a: 'Apresentamos cursos reais, com mensalidades a partir de $7.000/ano e formato híbrido, para você poder estudar e trabalhar ao mesmo tempo nos EUA.',
+  },
+  {
+    q: '11. O que recebo depois de escolher uma opção?',
+    a: 'Enviamos um manual completo em português com todos os documentos necessários, prazos e o passo a passo para a aplicação na universidade escolhida.',
+  },
+  {
+    q: '12. Como funciona o acompanhamento durante o processo?',
+    a: 'Caminhamos com você em todo o processo: ajudando com dúvidas, documentos, traduções e, se precisar, indicamos especialistas em visto de estudante.',
+  },
+  {
+    q: '13. O que acontece depois da aprovação?',
+    a: 'Com o I-20 aprovado, você aplica para o visto e se prepara para embarcar. E mesmo depois de partir, seguimos disponíveis para te apoiar no que for preciso.',
+  },
+];
+
 function FaqItemComponent({ q, a }: { q: string; a: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -151,15 +174,26 @@ export default function FAQPage() {
           </div>
 
           <ScrollReveal variant="fadeUp" delay={100}>
+            <div className={styles.blockC}>
+              <h2 className={styles.blockCTitle}>Como funciona o processo</h2>
+              <ul className={styles.faqList}>
+                {faqBlock3.map((item) => (
+                  <FaqItemComponent key={item.q} q={item.q} a={item.a} />
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fadeUp" delay={100}>
             <div className={styles.bottomCta}>
-              <p className={styles.bottomCtaText}>Não encontrou sua resposta?</p>
+              <p className={styles.bottomCtaText}>Ficou com alguma dúvida?</p>
               <a
-                href="https://wa.me/+12023676174"
+                href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.ctaBtn}
               >
-                Fale Conosco
+                Entre em contato pelo WhatsApp
               </a>
             </div>
           </ScrollReveal>

@@ -46,7 +46,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: var(--space-12);
   padding-bottom: var(--space-12);
   position: relative;
@@ -68,8 +68,8 @@
 }
 
 .logoImg {
-  width: 56px;
-  height: 56px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   filter: brightness(0) invert(1);
   animation: logoFloat 6s ease-in-out infinite;

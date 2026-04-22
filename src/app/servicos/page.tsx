@@ -1,8 +1,38 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
+import KommoForm from '@/components/KommoForm/KommoForm';
+
+function ServiceCard({ title, text, image }: { title: string; text: string; image: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`${styles.card} ${open ? styles.cardOpen : ''}`} onClick={() => setOpen(!open)}>
+      <div className={styles.cardImgWrap}>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={styles.cardImg}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+        <div className={styles.cardOverlay}>
+          <span className={styles.cardToggleIcon}>{open ? '−' : '+'}</span>
+        </div>
+      </div>
+      <div className={styles.cardContent}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <div className={styles.cardBody}>
+          <div className={styles.cardBodyInner}>
+            <p className={styles.cardText}>{text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const servicesList = [
   {
@@ -85,21 +115,7 @@ export default function ServicosPage() {
           <div className={styles.servicesGrid}>
             {servicesList.map((service, idx) => (
               <ScrollReveal key={idx} variant="fadeUp" delay={idx * 150}>
-                <div className={styles.card}>
-                  <div className={styles.cardImgWrap}>
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className={styles.cardImg}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className={styles.cardContent}>
-                    <h3 className={styles.cardTitle}>{service.title}</h3>
-                    <p className={styles.cardText}>{service.text}</p>
-                  </div>
-                </div>
+                <ServiceCard title={service.title} text={service.text} image={service.image} />
               </ScrollReveal>
             ))}
           </div>
@@ -122,14 +138,7 @@ export default function ServicosPage() {
               <p className={styles.finalText}>
                 Nosso serviço é 100% gratuito porque é financiado pelas universidades parceiras. Você nunca será cobrado por atendimento, orientação ou apoio. Aqui, tudo é feito com transparência, cuidado e propósito.
               </p>
-              <a
-                href="https://wa.me/+12023676174"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.ctaBtn}
-              >
-                Iniciar conversa no WhatsApp
-              </a>
+              <KommoForm />
             </div>
           </ScrollReveal>
         </div>

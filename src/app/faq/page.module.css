@@ -105,6 +105,21 @@
   align-items: start;
 }
 
+/* Bloco C — perguntas do processo (largura total) */
+.blockC {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.blockCTitle {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  color: var(--color-purple-dark);
+  letter-spacing: -0.02em;
+}
+
 /* ── Photo wrap ── */
 .photoWrap {
   border-radius: 20px;

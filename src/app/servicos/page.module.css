@@ -158,6 +158,10 @@
   }
 }
 
+.card {
+  cursor: pointer;
+}
+
 .card:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 24px 56px rgba(90, 24, 154, 0.32), 0 0 0 2px rgba(255,140,50,0.4);
@@ -182,12 +186,53 @@
   transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
 
+/* Toggle icon overlay */
+.cardOverlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  background: rgba(0,0,0,0.45);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.card:hover .cardOverlay {
+  background: var(--color-orange);
+}
+
+.cardToggleIcon {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 400;
+}
+
 .cardContent {
   padding: 28px 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  flex: 1;
+}
+
+/* Text hidden by default, slides open on click */
+.cardBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.cardBodyInner {
+  overflow: hidden;
+}
+
+.cardOpen .cardBody {
+  grid-template-rows: 1fr;
 }
 
 .cardTitle {

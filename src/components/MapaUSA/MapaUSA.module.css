@@ -1,0 +1,233 @@
+/* =========================================
+   MAPA USA INTERATIVO (SVG REAL)
+   ========================================= */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(107, 33, 168, 0.05) 0%, transparent 70%);
+}
+
+.svgMap {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  max-height: 600px;
+}
+
+.geography {
+  fill: #e8eaf6; 
+  stroke: #ffffff; 
+  stroke-width: 0.75;
+  transition: fill 0.3s ease;
+  outline: none;
+}
+
+.geography:hover {
+  fill: #d0d4f0; 
+}
+
+/* ── Pin group ── */
+.pinGroup {
+  cursor: pointer;
+  outline: none;
+}
+
+.pinGroup:focus-visible .pin {
+  stroke: #fff;
+  stroke-width: 1;
+}
+
+/* Animated pulse ring */
+.pulse {
+  fill: rgba(255, 107, 43, 0.25);
+  animation: pinPulse 2s ease-out infinite;
+}
+
+@keyframes pinPulse {
+  0%   { r: 7;  opacity: 0.8; }
+  70%  { r: 18; opacity: 0; }
+  100% { r: 18; opacity: 0; }
+}
+
+/* Core pin dot */
+.pin {
+  fill: var(--color-orange, #ff6b2b);
+  stroke: #fff;
+  stroke-width: 1;
+  transition: fill 0.3s ease, r 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pinActive {
+  fill: var(--color-purple, #6b21a8);
+  r: 8; /* active state larger */
+}
+
+.pinGroup:hover .pin {
+  fill: var(--color-purple-dark, #3d1a78);
+  r: 7;
+}
+
+/* ── Panel Overlay (Agora embaixo do mapa) ── */
+.sidePanel {
+  width: 100%;
+  min-height: 140px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(107, 33, 168, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.panelEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 24px;
+  height: 100%;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.emptyIcon {
+  font-size: 28px;
+  margin-bottom: 8px;
+  animation: floatHand 2s ease-in-out infinite;
+}
+
+@keyframes floatHand {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.panelContent {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr auto;
+  align-items: center;
+  padding: 24px;
+  gap: 16px;
+  animation: fadePanel 0.3s ease-out;
+}
+
+.panelInfoMain {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadePanel {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panelState {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-orange, #ff6b2b);
+  margin-bottom: -8px;
+}
+
+.panelCity {
+  font-size: 14px;
+  color: #777;
+  font-weight: 600;
+}
+
+.panelName {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--color-purple-dark, #3d1a78);
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.panelDetailBox {
+  background: rgba(107, 33, 168, 0.04);
+  border-radius: 8px;
+  padding: 12px;
+  border-left: 3px solid var(--color-orange);
+}
+
+.panelLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.panelCourses {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  line-height: 1.4;
+}
+
+.panelPrice {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-purple-dark);
+}
+
+.closeBtn {
+  background: transparent;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  height: fit-content;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* ── Hint text ── */
+.hint {
+  font-size: 13px;
+  color: #999;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .panelContent {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .panelContent {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .panelEmpty {
+    flex-direction: column;
+    text-align: center;
+  }
+}

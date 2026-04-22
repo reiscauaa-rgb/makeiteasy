@@ -11,13 +11,6 @@ const navLinks = [
   { href: '/contato',  label: 'Contato' },
 ];
 
-const serviceLinks = [
-  { href: '/servicos', label: 'Orientação Personalizada' },
-  { href: '/servicos', label: 'Parcerias Universitárias' },
-  { href: '/servicos', label: 'Opções Acessíveis' },
-  { href: '/servicos', label: 'Suporte em Português' },
-];
-
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -31,13 +24,10 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="Make It Easy USA"
-                width={56}
-                height={56}
+                width={100}
+                height={100}
                 className={styles.logoImg}
               />
-              <span className={styles.logoName}>
-                Make It <span>Easy</span> USA
-              </span>
             </Link>
 
             <p className={styles.tagline}>
@@ -69,7 +59,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.socialLink}
                 aria-label="WhatsApp Make It Easy USA"
               >
@@ -86,18 +78,6 @@ export default function Footer() {
             <nav className={styles.columnLinks}>
               {navLinks.map((link) => (
                 <Link key={link.href + link.label} href={link.href} className={styles.columnLink}>
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Services */}
-          <div className={styles.column}>
-            <h3 className={styles.columnTitle}>Serviços</h3>
-            <nav className={styles.columnLinks}>
-              {serviceLinks.map((link) => (
-                <Link key={link.label} href={link.href} className={styles.columnLink}>
                   {link.label}
                 </Link>
               ))}

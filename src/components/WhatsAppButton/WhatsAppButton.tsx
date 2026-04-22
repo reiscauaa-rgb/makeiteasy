@@ -3,7 +3,9 @@ import styles from './WhatsAppButton.module.css';
 export default function WhatsAppButton() {
   return (
     <a
-      href="#"
+      href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
+      target="_blank"
+      rel="noopener noreferrer"
       className={styles.btn}
       aria-label="Entrar em contato via WhatsApp"
       title="Falar no WhatsApp"

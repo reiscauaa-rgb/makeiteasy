@@ -50,14 +50,11 @@ export default function Header() {
             <Image
               src="/images/logo.png"
               alt="Make It Easy USA"
-              width={48}
-              height={48}
+              width={160}
+              height={160}
               className={styles.logoImage}
               priority
             />
-            <span className={styles.logoText}>
-              Make It <span>Easy</span> USA
-            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -71,9 +68,6 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/contato" className={styles.ctaBtn}>
-              Fale conosco
-            </Link>
           </nav>
 
           {/* Mobile Hamburger */}
@@ -105,9 +99,6 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
-        <Link href="/contato" className={styles.ctaBtn} onClick={closeMenu}>
-          Fale conosco
-        </Link>
       </div>
     </>
   );

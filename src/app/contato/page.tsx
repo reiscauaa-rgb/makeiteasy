@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import styles from './page.module.css';
+import KommoForm from '@/components/KommoForm/KommoForm';
 
 export const metadata: Metadata = {
   title: 'Contato | Make It Easy USA — Assessoria Educacional',
@@ -48,13 +49,7 @@ export default function ContatoPage() {
             </h1>
 
             <div className={styles.heroActions}>
-              <a
-                href="#"
-                className={styles.whatsappBtn}
-                aria-label="Fale conosco pelo WhatsApp"
-              >
-                Fale conosco pelo WhatsApp
-              </a>
+              <KommoForm />
             </div>
           </div>
 

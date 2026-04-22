@@ -76,7 +76,7 @@
   align-items: center;
   text-align: center;
   gap: var(--space-6);
-  max-width: 480px;
+  max-width: 580px;
 }
 
 /* Floating badge */
@@ -110,11 +110,12 @@
 
 /* Headline */
 .heroTitle {
-  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+  font-size: 52px;
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-orange);
+  white-space: normal;
 }
 
 /* Subtitle */
@@ -275,8 +276,14 @@
 }
 
 @media (max-width: 640px) {
+  .heroBgImg {
+    object-fit: contain;
+    object-position: top;
+  }
+
   .hero {
-    min-height: 45vh; /* Manter a proporção paisagem para não cortar o fundo */
+    min-height: auto;
+    padding-bottom: 24px;
   }
 
   .heroContent {

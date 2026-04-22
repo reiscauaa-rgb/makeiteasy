@@ -1,5 +1,5 @@
 /* =========================================
-   STEPS SECTION — 5 Passos (Animated)
+   STEPS SECTION — Click to reveal
    ========================================= */
 
 .section {
@@ -12,49 +12,50 @@
 /* ── Header ── */
 .header {
   text-align: center;
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-4);
 }
 
 .eyebrow {
   display: inline-block;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-md);
   font-weight: 700;
   color: var(--color-orange);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .intro {
-  font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-xl));
-  font-weight: 500;
-  color: var(--color-gray-dark);
-  margin-bottom: var(--space-5);
-  line-height: 1.5;
-}
-
-.title {
   font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
   font-weight: 800;
-  color: var(--color-purple-dark);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-.title span {
+.introOrange {
   color: var(--color-orange);
 }
 
-/* ── Steps illustration ── */
-.stepsImageWrap {
-  display: block;
+.introDark {
+  color: var(--color-purple-dark);
 }
 
-.stepsImage {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto var(--space-12);
-  display: block;
+/* ── Hint ── */
+.hint {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray);
+  margin-bottom: var(--space-10);
+  letter-spacing: 0.01em;
+}
+
+/* ── Free Tag ── */
+.freeTag {
+  text-align: center;
+  margin-top: var(--space-8);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-gray);
 }
 
 /* ── Steps Grid ── */
@@ -62,11 +63,10 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: var(--space-6);
-  position: relative;
-  align-items: start;
   list-style: none;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 /* Connector line */
@@ -85,12 +85,6 @@
     transparent 18px
   );
   z-index: 0;
-  opacity: 0;
-  transition: opacity 1s ease 3.2s;
-}
-
-.stepsActive::before {
-  opacity: 1;
 }
 
 /* ── Individual Step ── */
@@ -102,29 +96,31 @@
   gap: var(--space-3);
   position: relative;
   z-index: 1;
-
-  /* Initially invisible and centered */
-  opacity: 0;
-  transform: scale(0.6) translateY(30px);
-  transition: opacity 1s cubic-bezier(0.16,1,0.3,1),
-              transform 1s cubic-bezier(0.16,1,0.3,1);
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  transition: background var(--transition-base), box-shadow var(--transition-base);
+  outline: none;
+  animation: stepPulse 2.5s ease-in-out infinite;
 }
 
-/* Step revealed — slides to its position */
-.stepVisible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+.step:nth-child(1) { animation-delay: 0s; }
+.step:nth-child(2) { animation-delay: 0.5s; }
+.step:nth-child(3) { animation-delay: 1s; }
+.step:nth-child(4) { animation-delay: 1.5s; }
+.step:nth-child(5) { animation-delay: 2s; }
+
+@keyframes stepPulse {
+  0%, 100% { transform: translateY(0); box-shadow: none; }
+  50%       { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(91, 45, 166, 0.18); }
 }
 
-/* Latest step gets a highlight pulse */
-.stepLatest .stepNumber {
-  animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+.step:hover {
+  background: rgba(91, 45, 166, 0.05);
 }
 
-@keyframes popIn {
-  0%   { transform: scale(0.3); opacity: 0; }
-  60%  { transform: scale(1.2); }
-  100% { transform: scale(1); opacity: 1; }
+.step:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-orange);
 }
 
 /* ── Number Circle ── */
@@ -142,75 +138,29 @@
   border: 4px solid var(--color-white);
   box-shadow: 0 4px 20px rgba(91, 45, 166, 0.3), 0 0 0 3px var(--color-orange);
   flex-shrink: 0;
-  position: relative;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-/* ── Continuous Animations ── */
-
-/* 1) Floating effect on the number circles — always active */
-.stepVisible .stepNumber {
-  animation: stepFloat 5s ease-in-out infinite;
+.step:hover .stepNumber,
+.stepOpen .stepNumber {
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(91, 45, 166, 0.45), 0 0 0 3px var(--color-orange);
 }
 
-/* Each step gets a different delay so they float out of sync */
-.step:nth-child(1) .stepNumber { animation-delay: 0s; }
-.step:nth-child(2) .stepNumber { animation-delay: 1s; }
-.step:nth-child(3) .stepNumber { animation-delay: 2s; }
-.step:nth-child(4) .stepNumber { animation-delay: 3s; }
-.step:nth-child(5) .stepNumber { animation-delay: 4s; }
-
-@keyframes stepFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-
-/* 2) Glow ring that pulses continuously */
-.stepVisible .stepNumber::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 2px solid var(--color-orange);
-  opacity: 0;
-  animation: ringPulse 4s ease-in-out infinite;
-}
-
-.step:nth-child(1) .stepNumber::after { animation-delay: 0.5s; }
-.step:nth-child(2) .stepNumber::after { animation-delay: 1.3s; }
-.step:nth-child(3) .stepNumber::after { animation-delay: 2.1s; }
-.step:nth-child(4) .stepNumber::after { animation-delay: 2.9s; }
-.step:nth-child(5) .stepNumber::after { animation-delay: 3.7s; }
-
-@keyframes ringPulse {
-  0%   { transform: scale(1); opacity: 0.5; }
-  50%  { transform: scale(1.4); opacity: 0; }
-  100% { transform: scale(1); opacity: 0; }
-}
-
-/* 3) Gentle icon wobble */
+/* ── Icon ── */
 .stepIcon {
   font-size: 2rem;
   line-height: 1;
   display: inline-block;
+  transition: transform var(--transition-base);
 }
 
-.stepVisible .stepIcon {
-  animation: iconWobble 6s ease-in-out infinite;
+.step:hover .stepIcon,
+.stepOpen .stepIcon {
+  transform: scale(1.2) rotate(-5deg);
 }
 
-.step:nth-child(1) .stepIcon { animation-delay: 0.5s; }
-.step:nth-child(2) .stepIcon { animation-delay: 1.5s; }
-.step:nth-child(3) .stepIcon { animation-delay: 2.5s; }
-.step:nth-child(4) .stepIcon { animation-delay: 3.5s; }
-.step:nth-child(5) .stepIcon { animation-delay: 4.5s; }
-
-@keyframes iconWobble {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  25%      { transform: rotate(-5deg) scale(1.08); }
-  75%      { transform: rotate(5deg) scale(1.08); }
-}
-
-/* 4) Label subtle pulse */
+/* ── Label ── */
 .stepLabel {
   font-size: var(--font-size-sm);
   font-weight: 700;
@@ -218,42 +168,26 @@
   line-height: 1.4;
 }
 
-.stepVisible .stepLabel {
-  animation: labelPulse 5s ease-in-out infinite;
+/* ── Description — hidden by default, revealed on click ── */
+.stepDescWrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease;
+  opacity: 0;
 }
 
-.step:nth-child(1) .stepLabel { animation-delay: 0.2s; }
-.step:nth-child(2) .stepLabel { animation-delay: 1.2s; }
-.step:nth-child(3) .stepLabel { animation-delay: 2.2s; }
-.step:nth-child(4) .stepLabel { animation-delay: 3.2s; }
-.step:nth-child(5) .stepLabel { animation-delay: 4.2s; }
-
-@keyframes labelPulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.65; }
+.stepOpen .stepDescWrap {
+  max-height: 200px;
+  opacity: 1;
 }
 
-/* 5) Description gentle glow */
 .stepDesc {
   font-size: var(--font-size-xs);
   color: var(--color-gray);
   line-height: 1.65;
   text-align: center;
-}
-
-.stepVisible .stepDesc {
-  animation: descGlow 6s ease-in-out infinite;
-}
-
-.step:nth-child(1) .stepDesc { animation-delay: 0.4s; }
-.step:nth-child(2) .stepDesc { animation-delay: 1.4s; }
-.step:nth-child(3) .stepDesc { animation-delay: 2.4s; }
-.step:nth-child(4) .stepDesc { animation-delay: 3.4s; }
-.step:nth-child(5) .stepDesc { animation-delay: 4.4s; }
-
-@keyframes descGlow {
-  0%, 100% { color: var(--color-gray); }
-  50%      { color: var(--color-purple-dark); }
+  padding-top: var(--space-2);
 }
 
 /* ── Responsive ── */
@@ -271,12 +205,16 @@
 @media (max-width: 640px) {
   .steps {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 
   .stepNumber {
     width: 60px;
     height: 60px;
     font-size: var(--font-size-lg);
+  }
+
+  .intro {
+    font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-2xl));
   }
 }

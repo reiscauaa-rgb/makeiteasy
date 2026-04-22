@@ -3,33 +3,54 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
+import ReviewsCarousel from '@/components/ReviewsCarousel/ReviewsCarousel';
+import type { Review } from '@/components/ReviewsCarousel/ReviewsCarousel';
+import MapaUSA from '@/components/MapaUSA/MapaUSA';
 
 // Metadata moved to layout or head for client component
 
-const reviews = [
+const reviews: Review[] = [
   {
-    name: 'Lívia Chieppe',
-    initials: 'LC',
-    date: '15 dias atrás',
-    text: 'Giovanna foi uma ótima assessora, desde o início sempre muito atenciosa e proativa…',
+    name: 'Lais Koller',
+    initials: 'LK',
+    date: '2 meses atrás',
+    text: 'Excelente profissional! Responde as dúvidas com muita rapidez e eficiência. Sempre disposta a ajudar!',
   },
   {
-    name: 'Thalya Faria',
-    initials: 'TF',
-    date: '15 dias atrás',
-    text: 'A Giovanna, foi simplesmente essencial em todo o meu processo de aplicação para a…',
+    name: 'Ana Júlia Malheiros',
+    initials: 'AJ',
+    date: '2 meses atrás',
+    text: 'Foi perfeito! Giovanna me ajudou em todo o processo e me tirou todas as dúvidas! Desde o começo até a aprovação do meu status!',
   },
   {
-    name: 'Maria Rodriguez',
-    initials: 'MR',
-    date: '24 dias atrás',
-    text: 'Gio me ayudó con todo lo que necesite en todo momento, desde los primeros documentos…',
+    name: 'Jocassia Tonini',
+    initials: 'JT',
+    date: '2 meses atrás',
+    text: 'Giovanna sempre super prestativa respondendo todas as minhas perguntas e me orientando na aplicação e nas dúvidas sobre qual universidade escolher, sobre as aulas, CPT. Super recomendo! 💯',
   },
   {
-    name: 'Jaine Campos de S.',
-    initials: 'JC',
-    date: '25 dias atrás',
-    text: 'O serviço da MakeItEasy é sensacional! Precisei de consultoria para escolher um…',
+    name: 'Jennifer Benner',
+    initials: 'JB',
+    date: '2 meses atrás',
+    text: 'Giovanna é excepcional! Muito querida e disposta a ajudar com qualquer problema ou dúvida! Ela foi sem dúvida a melhor pessoa que já me ajudou em algo relacionado a visto/estudos aqui nos EUA. Recomendo muito mesmo. Atenciosa, gentil e muito simpática!',
+  },
+  {
+    name: 'Caroline',
+    initials: 'CA',
+    date: '2 meses atrás',
+    text: 'Quero deixar meu agradecimento e minha recomendação para a assessoria da Giovanna. Ela foi simplesmente incrível durante todo o processo: super solicita, sempre pronta para ajudar, responde tudo muito rápido e te deixa extremamente tranquila em cada etapa. Gi, você foi fundamental para que tudo desse certo! ✨',
+  },
+  {
+    name: 'Alexandre Melo',
+    initials: 'AM',
+    date: '3 meses atrás',
+    text: 'O serviço prestado pela MAKE IT EASY é espetacular. Recomendo com absoluta convicção. A Giovanna sempre muito prestativa e cordial, com pleno conhecimento dos trâmites necessários para esclarecer e resolver os assuntos acadêmicos. SUPER RECOMENDO - serviço VIP 5 estrelas.',
+  },
+  {
+    name: 'Joyce Goncalves',
+    initials: 'JG',
+    date: '3 meses atrás',
+    text: 'A minha experiência com a Giovanna foi incrível. Sou imensamente grata por todo o suporte, atenção e empatia. Ela me ajudou a encontrar a faculdade e o curso alinhado com minhas expectativas. Recomendo e confio de olhos fechados no trabalho dela.',
   },
 ];
 
@@ -38,28 +59,22 @@ export default function SobrePage() {
     <main>
 
       {/* ════════════════════════════════════
-          HERO — Blob roxo + título + bandeiras
+          HERO
           ════════════════════════════════════ */}
-      <div className={styles.heroWrapper}>
-        <div className={styles.heroBlob}>
-          <div className={styles.heroBlobContent}>
-            <p className={styles.heroTagline}>Uma história real. Uma missão simples:</p>
-            <h1 className={styles.heroTitle}>Facilitar sua jornada.</h1>
-
-            {/* Bandeiras flutuantes */}
-            <div className={styles.heroFlags}>
-              <Image
-                src="/images/hero flutuante.avif"
-                alt="Bandeiras do Brasil e dos EUA conectadas por um avião"
-                width={280}
-                height={140}
-                className={styles.heroFlagsImg}
-                priority
-              />
-            </div>
-          </div>
+      <section className={styles.hero}>
+        <Image
+          src="/images/hero-sobre-correta.png"
+          alt=""
+          width={1920}
+          height={800}
+          className={styles.heroBgImg}
+          priority
+        />
+        <div className={styles.heroInner}>
+          <p className={styles.heroSubtitle}>Uma história real. Uma missão simples:</p>
+          <h1 className={styles.heroTitle}>Facilitar sua jornada.</h1>
         </div>
-      </div>
+      </section>
 
       {/* ════ Gradient container — all sections flow seamlessly ════ */}
       <div className={styles.pageGradient}>
@@ -171,16 +186,10 @@ export default function SobrePage() {
         <div className="container">
           <div className={styles.proofGrid}>
 
-            {/* Mapa */}
+            {/* Mapa Interativo */}
             <ScrollReveal variant="fadeLeft">
               <div className={styles.proofMapWrap}>
-                <Image
-                  src="/images/mapa.avif"
-                  alt="Mapa dos Estados Unidos com pins marcando onde nossos alunos estudam"
-                  fill
-                  className={styles.proofMapImg}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+                <MapaUSA />
               </div>
             </ScrollReveal>
 
@@ -195,7 +204,7 @@ export default function SobrePage() {
                   transformarem suas histórias.
                 </p>
                 <p className={styles.proofNote}>E a próxima pode ser a sua.</p>
-                <a href="#" className={styles.whatsappBtn} aria-label="Iniciar conversa no WhatsApp">
+                <a href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn} aria-label="Iniciar conversa no WhatsApp">
                   Iniciar conversa no WhatsApp
                 </a>
               </div>
@@ -207,86 +216,13 @@ export default function SobrePage() {
       {/* ════════════════════════════════════
           DEPOIMENTOS — Google Reviews
           ════════════════════════════════════ */}
-      <section className={styles.reviewsSection} aria-labelledby="reviews-title">
-        <div className="container">
-
-          <div className={styles.reviewsHeader}>
-            <h2 className={styles.reviewsTitle} id="reviews-title">
-              O que estão falando de nós?
-            </h2>
-          </div>
-
-          {/* Google score row */}
-          <div className={styles.reviewsScoreRow}>
-            <div className={styles.googleBadge}>
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              <span>Google Reviews</span>
-            </div>
-            <span className={styles.scoreNumber}>5.0</span>
-            <span className={styles.stars}>★★★★★</span>
-            <span className={styles.reviewCount}>(196)</span>
-            <a
-              href="https://www.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.googleReviewBtn}
-            >
-              Review us on Google
-            </a>
-          </div>
-
-          {/* Review cards */}
-          <div className={styles.reviewsGrid}>
-            {reviews.map((r) => (
-              <article key={r.name} className={styles.reviewCard}>
-                <div className={styles.reviewerRow}>
-                  <div className={styles.reviewerAvatar} aria-hidden="true">
-                    {r.initials}
-                  </div>
-                  <div className={styles.reviewerInfo}>
-                    <p className={styles.reviewerName}>
-                      {r.name}
-                      <svg
-                        className={styles.reviewVerifiedIcon}
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="#4285F4"
-                        aria-label="Verificado"
-                      >
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                      </svg>
-                    </p>
-                    <p className={styles.reviewDate}>{r.date}</p>
-                  </div>
-                  {/* Google G icon */}
-                  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                  </svg>
-                </div>
-                <div className={styles.reviewStars} aria-label="5 estrelas">★★★★★</div>
-                <p className={styles.reviewText}>{r.text}</p>
-                <a href="#" className={styles.reviewReadMore}>Read more</a>
-              </article>
-            ))}
-          </div>
-
-          {/* Actions */}
-          <div className={styles.reviewsActions}>
-            <a href="#" className={styles.ctaBtn} aria-label="Iniciar conversa no WhatsApp">
-              Iniciar conversa no WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+      <ReviewsCarousel
+        reviews={reviews}
+        title="O que estão falando de nós?"
+        googleLink="https://www.google.com"
+        totalReviews={196}
+        score="5.0"
+      />
 
     </div>{/* end pageGradient */}
 

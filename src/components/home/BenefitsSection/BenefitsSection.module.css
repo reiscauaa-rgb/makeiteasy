@@ -49,7 +49,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
-  align-items: end;
+  align-items: stretch;
 }
 
 /* Card */
@@ -60,6 +60,9 @@
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -84,8 +87,8 @@
 }
 
 .cardImage {
-  object-fit: contain;
-  object-position: bottom center;
+  object-fit: cover;
+  object-position: center top;
   transition: transform var(--transition-slow);
 }
 
@@ -119,6 +122,7 @@
   padding: var(--space-6);
   background: var(--color-purple-dark);
   color: var(--color-white);
+  flex: 1;
 }
 
 .cardTitle {

@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className={styles.heroBg}>
         <Image
-          src="/images/hero-bg-v2.png"
+          src="/images/hero-bg-v3.png"
           alt=""
           fill
           className={styles.heroBgImg}
@@ -38,23 +38,19 @@ export default function HeroSection() {
 
         {/* Center Text */}
         <div className={styles.heroCenter}>
-          <div className={styles.heroBadge}>
-            <span className={styles.heroBadgeDot} />
-            Assessoria 100% Gratuita
-          </div>
-
           <h1 className={styles.heroTitle}>
-            Estude nos EUA de forma acessível
+            Estude nos EUA<br />de forma Acessível
           </h1>
 
           <p className={styles.heroSubtitle}>
-            Assessoria gratuita e humanizada para brasileiros no exterior.
-            Realizamos seu sonho americano com orientação personalizada, do primeiro contato ao embarque.
+            Assessoria gratuita e humanizada para brasileiros no exterior
           </p>
 
           <div className={styles.heroActions}>
             <a
-              href="#"
+              href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.whatsappBtn}
               aria-label="Iniciar conversa no WhatsApp"
             >

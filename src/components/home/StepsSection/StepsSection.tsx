@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
 import styles from './StepsSection.module.css';
 
 const steps = [
@@ -38,100 +37,56 @@ const steps = [
 ];
 
 export default function StepsSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [visibleCount, setVisibleCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [openStep, setOpenStep] = useState<number | null>(null);
 
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [hasStarted]);
-
-  // Reveal steps one by one after section is visible
-  useEffect(() => {
-    if (!hasStarted) return;
-
-    const timers: NodeJS.Timeout[] = [];
-    steps.forEach((_, idx) => {
-      const t = setTimeout(() => {
-        setVisibleCount(idx + 1);
-      }, (idx + 1) * 900); // 900ms between each step — slower reveal
-      timers.push(t);
-    });
-
-    return () => timers.forEach(clearTimeout);
-  }, [hasStarted]);
+  const toggle = (idx: number) => {
+    setOpenStep(prev => (prev === idx ? null : idx));
+  };
 
   return (
     <section
       className={styles.section}
       id="como-funciona"
       aria-labelledby="steps-title"
-      ref={sectionRef}
     >
       <div className="container">
         <div className={styles.header}>
           <p className={styles.intro}>
-            Seu caminho para estudar nos EUA pode ser mais fácil conosco!
+            <span className={styles.introOrange}>Seu caminho para estudar nos EUA</span><br />
+            <span className={styles.introDark}>pode ser mais fácil conosco!</span>
           </p>
           <span className={styles.eyebrow}>Como funciona</span>
-          <h2 className={styles.title} id="steps-title">
-            Do sonho ao <span>embarque</span>
-          </h2>
         </div>
 
-        {/* The 5 Passos illustration */}
-        <div className={styles.stepsImageWrap}>
-          <Image
-            src="/images/5 passos.png"
-            alt="Ilustração dos 5 passos do processo de assessoria"
-            width={900}
-            height={300}
-            className={styles.stepsImage}
-          />
-        </div>
+        <p className={styles.hint}>Clique para ver os detalhes</p>
 
-        {/* Animated steps grid */}
-        <ol className={`${styles.steps} ${hasStarted ? styles.stepsActive : ''}`}>
+        <ol className={styles.steps}>
           {steps.map((step, idx) => {
-            const isVisible = idx < visibleCount;
-            const isLatest = idx === visibleCount - 1;
-
+            const isOpen = openStep === idx;
             return (
               <li
                 key={step.number}
-                className={`
-                  ${styles.step}
-                  ${isVisible ? styles.stepVisible : ''}
-                  ${isLatest ? styles.stepLatest : ''}
-                `}
-                style={{
-                  transitionDelay: `${idx * 50}ms`,
-                }}
+                className={`${styles.step} ${isOpen ? styles.stepOpen : ''}`}
+                onClick={() => toggle(idx)}
+                aria-expanded={isOpen}
+                role="button"
+                tabIndex={0}
+                onKeyDown={e => e.key === 'Enter' && toggle(idx)}
               >
                 <div className={styles.stepNumber} aria-label={`Passo ${step.number}`}>
                   {step.number}
                 </div>
                 <span className={styles.stepIcon} aria-hidden="true">{step.icon}</span>
                 <p className={styles.stepLabel}>{step.label}</p>
-                <p className={styles.stepDesc}>{step.desc}</p>
+                <div className={styles.stepDescWrap}>
+                  <p className={styles.stepDesc}>{step.desc}</p>
+                </div>
               </li>
             );
           })}
         </ol>
+
+        <p className={styles.freeTag}>✅ Assessoria 100% gratuita</p>
       </div>
     </section>
   );
