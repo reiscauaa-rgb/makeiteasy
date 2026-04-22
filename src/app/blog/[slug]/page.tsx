@@ -198,13 +198,6 @@ export default function BlogPostPage() {
         <main>
             {/* ════ HERO ════ */}
             <section className={styles.hero}>
-                <Image
-                    src="/images/hero sobre.avif"
-                    alt=""
-                    fill
-                    className={styles.heroBgImg}
-                    priority
-                />
                 <div className={styles.heroInner}>
                     <Link href="/blog" className={styles.backLink}>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

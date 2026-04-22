@@ -65,11 +65,12 @@
 }
 
 .heroTitle {
-  font-size: clamp(44px, 7vw, 96px);
+  font-size: 52px;
   font-weight: 900;
   color: var(--color-orange);
   line-height: 1.1;
   letter-spacing: -0.03em;
+  white-space: normal;
   animation: heroTitleIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both;
 }
 
@@ -408,7 +409,8 @@
   }
 
   .heroTitle {
-    font-size: 32px;
+    font-size: clamp(20px, 6vw, 28px);
+    line-height: 1.1;
   }
 
   .heroFloatImg {
