@@ -2,7 +2,7 @@ import { createClient } from 'next-sanity';
 import { createImageUrlBuilder } from '@sanity/image-url';
 type SanityImageSource = any;
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '9xvppnkj';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 const isSanityConfigured = Boolean(projectId && /^[a-z0-9-]+$/.test(projectId));
 

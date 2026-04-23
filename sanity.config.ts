@@ -6,7 +6,7 @@ export default defineConfig({
     name: 'make-it-easy-blog',
     title: 'Make It Easy USA — Blog',
 
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '9xvppnkj',
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
     basePath: '/studio',
 
