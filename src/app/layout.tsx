@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from '@/components/Header/Header';
-import WhatsAppButton from '@/components/WhatsAppButton/WhatsAppButton';
-import FloatingActionButton from '@/components/FloatingActionButton/FloatingActionButton';
-import Footer from '@/components/Footer/Footer';
+import ConditionalLayout from '@/components/ConditionalLayout/ConditionalLayout';
 
 export const metadata: Metadata = {
   title: 'Make It Easy USA — Assessoria Educacional para Brasileiros',
@@ -26,11 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <FloatingActionButton />
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   );
