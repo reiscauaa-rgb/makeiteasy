@@ -14,25 +14,25 @@ const steps = [
     number: 2,
     icon: '🗺️',
     label: 'Te mostramos suas opções',
-    desc: 'A gente te apresenta cursos reais, com mensalidades a partir de $7.000/ano e com formato híbrido, pra você poder estudar e trabalhar.',
+    desc: 'A gente te apresenta cursos com valores acessíveis, formato híbrido e a possibilidade de ter autorização de trabalho durante o curso.',
   },
   {
     number: 3,
     icon: '📖',
-    label: 'Guia completo em português',
-    desc: 'Gostou de alguma opção? A gente te envia um manual com todos os documentos que vai precisar, prazos e o passo a passo para aplicação.',
+    label: 'Guia completo no seu idioma',
+    desc: 'A gente te envia um manual completo com uma lista de documentos necessários e o passo a passo para aplicação da universidade escolhida',
   },
   {
     number: 4,
     icon: '🤝',
     label: 'Acompanhamento de verdade',
-    desc: 'Durante todo o processo, caminhamos com você: ajudando com dúvidas, documentos, traduções e, se precisar, indicamos especialistas em visto.',
+    desc: 'Durante todo o processo, caminhamos com você: Tirando todas as suas dúvidas, conferindo de documentos, e se necessário, indicamos especialistas parceiros para cuidar do seu visto.',
   },
   {
     number: 5,
     icon: '✈️',
-    label: 'Tudo certo? Hora de embarcar!',
-    desc: 'Com o I-20 aprovado, você aplica para o visto e se prepara para embarcar. E mesmo depois, seguimos disponíveis para te apoiar no que for preciso.',
+    label: 'Aprovado ✅ Hora de estudar!',
+    desc: 'Após a aprovação da universidade e do visto, nós seguimos disponíveis para te apoiar na sua jornada.',
   },
 ];
 

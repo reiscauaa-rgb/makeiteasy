@@ -6,12 +6,12 @@
 .hero {
     position: relative;
     background: var(--color-white);
-    padding: calc(var(--header-height) + var(--space-10)) var(--container-pad) var(--space-8);
+    padding: calc(var(--header-height) + var(--space-4)) var(--container-pad) var(--space-4);
     overflow: hidden;
 }
 
 .heroInner {
-    max-width: 860px;
+    max-width: 1140px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -48,12 +48,13 @@
 }
 
 .heroTitle {
-    font-size: 52px;
+    font-size: clamp(28px, 4vw, 52px);
     font-weight: 900;
     color: var(--color-orange);
     line-height: 1.1;
     letter-spacing: -0.03em;
     white-space: normal;
+    text-align: center;
 }
 
 .heroMeta {

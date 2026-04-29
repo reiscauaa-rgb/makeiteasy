@@ -43,7 +43,7 @@ export default function HeroSection() {
           </h1>
 
           <p className={styles.heroSubtitle}>
-            Assessoria gratuita e humanizada para brasileiros no exterior
+            Assessoria gratuita e humanizada para curso superior nos EUA
           </p>
 
           <div className={styles.heroActions}>
@@ -64,9 +64,6 @@ export default function HeroSection() {
               </svg>
               Iniciar conversa no WhatsApp
             </a>
-            <span className={styles.heroNote}>
-              Resposta em até 24 horas • Sem compromisso
-            </span>
           </div>
         </div>
 

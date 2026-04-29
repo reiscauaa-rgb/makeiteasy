@@ -31,7 +31,7 @@ export default function Footer() {
             </Link>
 
             <p className={styles.tagline}>
-              Assessoria gratuita e humanizada para brasileiros que desejam estudar nos Estados Unidos. Do primeiro contato ao embarque, estamos com você.
+              Assessoria gratuita e humanizada para quem deseja estudar nos Estados Unidos. Do primeiro contato em diante, estamos com você!
             </p>
 
             {/* Social Links */}

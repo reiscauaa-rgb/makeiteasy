@@ -200,7 +200,7 @@ export default function SobrePage() {
                   Quem já passou<br />por aqui sabe:
                 </h2>
                 <p className={styles.proofBody}>
-                  Já ajudamos <strong>mais de 300 brasileiros</strong> a conquistarem suas vagas e
+                  Já ajudamos <strong>mais de 500 brasileiros</strong> a conquistarem suas vagas e
                   transformarem suas histórias.
                 </p>
                 <p className={styles.proofNote}>E a próxima pode ser a sua.</p>
@@ -219,8 +219,7 @@ export default function SobrePage() {
       <ReviewsCarousel
         reviews={reviews}
         title="O que estão falando de nós?"
-        googleLink="https://www.google.com"
-        totalReviews={196}
+        googleLink="https://www.google.com/maps/place/Make+It+Easy+USA/@38.4017657,-171.152481,3z/data=!4m8!3m7!1s0xa2174742d14909b5:0x48e8c97ce75b332!8m2!3d46.423669!4d-129.9427086!9m1!1b1!16s%2Fg%2F11ld37ffv4?entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D"
         score="5.0"
       />
 

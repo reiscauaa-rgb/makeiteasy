@@ -8,7 +8,7 @@
     background: transparent;
     padding: calc(var(--header-height) + 24px) var(--container-pad) 48px;
     overflow: hidden;
-    min-height: 45vh;
+    min-height: 55vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -386,11 +386,11 @@
 .ctaCard {
     background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
     border-radius: var(--radius-xl);
-    padding: var(--space-12) var(--space-12);
+    padding: var(--space-8) var(--space-8);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-8);
+    gap: var(--space-6);
     box-shadow: var(--shadow-lg);
 }
 
@@ -398,7 +398,6 @@
     font-size: var(--font-size-2xl);
     font-weight: 800;
     color: var(--color-white);
-    margin-bottom: var(--space-2);
 }
 
 .ctaBody {

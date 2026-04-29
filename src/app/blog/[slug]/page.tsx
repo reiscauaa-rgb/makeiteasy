@@ -254,23 +254,14 @@ export default function BlogPostPage() {
                         <PortableText value={post.body as any} components={ptComponents} />
                     )}
 
-                    {/* Share / CTA bar */}
-                    <div className={styles.sharebar}>
-                        <a
-                            href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
-                            target="_blank" rel="noopener noreferrer"
-                            className={styles.shareWhatsApp}
-                        >
-                            Tire sua dúvida no WhatsApp
-                        </a>
-                    </div>
+
                 </article>
 
                 {/* ── Sidebar / sticky CTA ── */}
                 <aside className={styles.sidebar}>
                     <div className={styles.sidebarCard}>
                         <h3 className={styles.sidebarTitle}>Quer estudar nos EUA?</h3>
-                        <p className={styles.sidebarText}>Assessoria gratuita e em português. A Giovanna te ajuda a encontrar a universidade certa.</p>
+                        <p className={styles.sidebarText}>Nossa assessoria é gratuita e personalizada, com orientação para encontrar a universidade ideal para você.</p>
                         <a
                             href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
                             target="_blank" rel="noopener noreferrer"

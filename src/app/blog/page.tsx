@@ -179,9 +179,6 @@ export default function BlogPage() {
                     <div className={styles.heroText}>
                         <p className={styles.heroEyebrow}>Make It</p>
                         <h1 className={styles.heroTitle}>Blog</h1>
-                        <p className={styles.heroSubtitle}>
-                            Dicas, guias e histórias reais para quem quer estudar e crescer nos EUA.
-                        </p>
                     </div>
                 </div>
             </section>
@@ -268,7 +265,6 @@ export default function BlogPage() {
                         <div className={styles.ctaCard}>
                             <div className={styles.ctaText}>
                                 <h2 className={styles.ctaTitle}>Tem dúvidas sobre estudar nos EUA?</h2>
-                                <p className={styles.ctaBody}>Nossa assessoria é gratuita e em português. Fale com a gente agora pelo WhatsApp.</p>
                             </div>
                             <a
                                 href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
@@ -276,7 +272,7 @@ export default function BlogPage() {
                                 rel="noopener noreferrer"
                                 className={styles.ctaBtn}
                             >
-                                Falar no WhatsApp
+                                Entrar em contato
                             </a>
                         </div>
                     </div>

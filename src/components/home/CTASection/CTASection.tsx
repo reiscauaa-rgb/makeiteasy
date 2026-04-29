@@ -35,7 +35,7 @@ export default function CTASection() {
             {/* Social proof */}
             <div className={styles.socialProof} aria-label="Estatísticas">
               <div className={styles.proofItem}>
-                <span className={styles.proofNumber}>300<span>+</span></span>
+                <span className={styles.proofNumber}>500<span>+</span></span>
                 <span className={styles.proofLabel}>Alunos assessorados</span>
               </div>
               <div className={styles.proofItem}>

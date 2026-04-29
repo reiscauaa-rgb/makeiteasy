@@ -37,32 +37,32 @@ function ServiceCard({ title, text, image }: { title: string; text: string; imag
 const servicesList = [
   {
     title: '1- Análise do seu perfil acadêmico e profissional',
-    text: 'A gente começa entendendo sua realidade, seus objetivos e o que você espera de um curso nos EUA. Avaliamos se temos universidades parceiras que combinem com o seu momento de vida, o seu orçamento e o seu formato ideal de estudos (online, híbrido, flexível).',
+    text: 'Começamos entendendo sua realidade, objetivos e o que você busca em um curso nos EUA. A partir disso, avaliamos opções que façam sentido para seu momento, orçamento e dentro do modelo híbrido.',
     image: '/images/serviço 1.avif',
   },
   {
     title: '2- Apresentação de opções reais e acessíveis',
-    text: 'Nada de ilusões ou ofertas genéricas: só mostramos universidades que realmente têm vagas e condições que se encaixam no seu perfil, com mensalidades a partir de US$ 7.000/ano, formatos híbridos (pra quem quer estudar e trabalhar) e sem necessidade de estar 100% presencial.',
+    text: 'Te apresentamos universidades alinhadas ao seu perfil, com valores competitivos e oportunidades de colocar em prática, no mercado de trabalho, o que você aprende durante o curso.',
     image: '/images/serviço 2.avif',
   },
   {
     title: '3- Envio do manual completo em português',
-    text: 'Se você gostar de alguma das opções, enviamos um guia prático e em português com o passo a passo para aplicar com Lista de documentos, Datas e prazos, Orientações de tradução, Testes de proficiência e Avaliação do diploma brasileiro.',
-    image: '/images/serviço 3.avif',
+    text: 'Se você gostar de alguma das opções, enviamos um guia prático com o passo a passo da aplicação, incluindo lista de documentos, prazos e instruções detalhadas de cada etapa.',
+    image: '/images/serviço 3 novo.avif.png',
   },
   {
     title: '4- Acompanhamento individual',
-    text: 'Nossa equipe acompanha cada etapa com você, do primeiro formulário até a emissão do I-20 (documento da universidade para o visto).Estamos aqui para tirar dúvidas, revisar documentos, orientar traduções, validar testes e te apoiar de verdade.',
+    text: 'Nossa equipe acompanha cada etapa com você, do primeiro contato até a emissão do I-20 (documento da universidade para o visto). Estamos aqui para tirar dúvidas, revisar documentos e orientar você ao longo de todo o processo.',
     image: '/images/serviço 4.avif',
   },
   {
     title: '5- Conexão com especialistas parceiros',
-    text: 'Caso precise de suporte com visto de estudante ou troca de status, indicamos profissionais parceiros especializados no assunto, com experiência em processos migratórios para os EUA.',
+    text: 'Se necessário, conectamos você a profissionais parceiros para visto de estudante, troca de status, traduções e equivalência de diploma.',
     image: '/images/serviço 5.avif',
   },
   {
     title: '6- Suporte pós-aprovação',
-    text: 'Mesmo depois que você for aprovado, seguimos por perto. Se surgir alguma dúvida sobre matrícula, aulas ou o funcionamento da universidade, pode contar com a gente. Nosso compromisso vai além do "ok, você foi aceito".',
+    text: 'Mesmo após a aprovação, permanecemos como ponto de apoio para dúvidas e orientações nos próximos passos.',
     image: '/images/serviço 6.avif',
   },
 ];
@@ -89,10 +89,10 @@ export default function ServicosPage() {
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle} id="services-title">
-              Serviços de Assessoria
+              Assessoria de aplicação
             </h1>
             <p className={styles.heroSubtitle}>
-              Na prática, o que oferecemos é <strong>uma assessoria gratuita e completa</strong> para brasileiros que sonham em estudar nos EUA, mas sem as complicações, custos abusivos ou promessas vazias. Abaixo, explicamos os principais pontos do nosso serviço:
+              Na prática, oferecemos uma assessoria gratuita e completa para quem quer estudar nos EUA, sem complicações, custos abusivos ou promessas irreais. Abaixo, explicamos os principais pontos do nosso serviço:
             </p>
           </div>
 
@@ -132,12 +132,12 @@ export default function ServicosPage() {
             <h2 className={styles.finalTitle}>
               E o melhor:<br />você não paga<br />nada por isso
             </h2>
+            <p className={styles.finalText}>
+              Nosso serviço é 100% gratuito porque é financiado pelas universidades parceiras. Você nunca será cobrado por atendimento, orientação ou apoio. Aqui, tudo é feito com transparência, cuidado e propósito.
+            </p>
           </ScrollReveal>
           <ScrollReveal variant="fadeRight" delay={200}>
             <div className={styles.finalRight}>
-              <p className={styles.finalText}>
-                Nosso serviço é 100% gratuito porque é financiado pelas universidades parceiras. Você nunca será cobrado por atendimento, orientação ou apoio. Aqui, tudo é feito com transparência, cuidado e propósito.
-              </p>
               <KommoForm />
             </div>
           </ScrollReveal>
