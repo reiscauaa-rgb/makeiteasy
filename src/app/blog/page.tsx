@@ -123,12 +123,15 @@ function PostCard({ post }: { post: Post }) {
     );
 }
 
+const POSTS_PER_PAGE = 6;
+
 export default function BlogPage() {
     const [posts, setPosts] = useState<Post[]>(PLACEHOLDER_POSTS);
     const [categories, setCategories] = useState<string[]>([]);
     const [activeCategory, setActiveCategory] = useState<string>('Todos');
     const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         async function load() {
@@ -164,6 +167,13 @@ export default function BlogPage() {
         });
     }, [posts, activeCategory, search]);
 
+    const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+    const paginatedPosts = filteredPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+
+    // Reset to page 1 whenever filter/search changes
+    const handleCategoryChange = (cat: string) => { setActiveCategory(cat); setCurrentPage(1); };
+    const handleSearchChange = (val: string) => { setSearch(val); setCurrentPage(1); };
+
     return (
         <main>
             {/* ════ HERO ════ */}
@@ -198,10 +208,10 @@ export default function BlogPage() {
                                 placeholder="Pesquisar artigos..."
                                 className={styles.searchInput}
                                 value={search}
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={(e) => handleSearchChange(e.target.value)}
                             />
                             {search && (
-                                <button className={styles.searchClear} onClick={() => setSearch('')} aria-label="Limpar busca">×</button>
+                                <button className={styles.searchClear} onClick={() => handleSearchChange('')} aria-label="Limpar busca">×</button>
                             )}
                         </div>
 
@@ -209,7 +219,7 @@ export default function BlogPage() {
                         <div className={styles.pills}>
                             <button
                                 className={`${styles.pill} ${activeCategory === 'Todos' ? styles.pillActive : ''}`}
-                                onClick={() => setActiveCategory('Todos')}
+                                onClick={() => handleCategoryChange('Todos')}
                             >
                                 Todos
                             </button>
@@ -217,7 +227,7 @@ export default function BlogPage() {
                                 <button
                                     key={cat}
                                     className={`${styles.pill} ${activeCategory === cat ? styles.pillActive : ''}`}
-                                    onClick={() => setActiveCategory(cat)}
+                                    onClick={() => handleCategoryChange(cat)}
                                 >
                                     {cat}
                                 </button>
@@ -235,22 +245,59 @@ export default function BlogPage() {
                     <p className={styles.resultsCount}>
                         {filteredPosts.length === 0
                             ? 'Nenhum artigo encontrado.'
-                            : `${filteredPosts.length} artigo${filteredPosts.length !== 1 ? 's' : ''} encontrado${filteredPosts.length !== 1 ? 's' : ''}`}
+                            : `${filteredPosts.length} artigo${filteredPosts.length !== 1 ? 's' : ''} encontrado${filteredPosts.length !== 1 ? 's' : ''} — página ${currentPage} de ${totalPages}`}
                     </p>
 
                     {filteredPosts.length > 0 ? (
-                        <div className={styles.grid}>
-                            {filteredPosts.map((post, i) => (
-                                <ScrollReveal key={post._id} variant="fadeUp" delay={i % 3 * 100}>
-                                    <PostCard post={post} />
-                                </ScrollReveal>
-                            ))}
-                        </div>
+                        <>
+                            <div className={styles.grid}>
+                                {paginatedPosts.map((post, i) => (
+                                    <ScrollReveal key={post._id} variant="fadeUp" delay={i % 3 * 100}>
+                                        <PostCard post={post} />
+                                    </ScrollReveal>
+                                ))}
+                            </div>
+
+                            {/* ── Pagination ── */}
+                            {totalPages > 1 && (
+                                <nav className={styles.pagination} aria-label="Paginação">
+                                    <button
+                                        className={`${styles.pageBtn} ${styles.pageBtnArrow}`}
+                                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                        disabled={currentPage === 1}
+                                        aria-label="Página anterior"
+                                    >
+                                        ‹
+                                    </button>
+
+                                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                        <button
+                                            key={page}
+                                            className={`${styles.pageBtn} ${page === currentPage ? styles.pageBtnActive : ''}`}
+                                            onClick={() => setCurrentPage(page)}
+                                            aria-label={`Página ${page}`}
+                                            aria-current={page === currentPage ? 'page' : undefined}
+                                        >
+                                            {page}
+                                        </button>
+                                    ))}
+
+                                    <button
+                                        className={`${styles.pageBtn} ${styles.pageBtnArrow}`}
+                                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                        disabled={currentPage === totalPages}
+                                        aria-label="Próxima página"
+                                    >
+                                        ›
+                                    </button>
+                                </nav>
+                            )}
+                        </>
                     ) : (
                         <div className={styles.emptyState}>
                             <span className={styles.emptyIcon}>🔍</span>
                             <p>Nenhum resultado para <strong>"{search || activeCategory}"</strong></p>
-                            <button className={styles.emptyReset} onClick={() => { setSearch(''); setActiveCategory('Todos'); }}>
+                            <button className={styles.emptyReset} onClick={() => { handleSearchChange(''); handleCategoryChange('Todos'); }}>
                                 Ver todos os artigos
                             </button>
                         </div>
