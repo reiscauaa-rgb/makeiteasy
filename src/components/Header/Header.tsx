@@ -5,20 +5,32 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
-const navLinks = [
-  { href: '/',         label: 'Início' },
-  { href: '/sobre',    label: 'Sobre' },
-  { href: '/servicos', label: 'Serviços' },
-  { href: '/blog',     label: 'Blog' },
-  { href: '/faq',      label: 'FAQ' },
-  { href: '/contato',  label: 'Contato' },
-];
+const navLinks = {
+  pt: [
+    { href: '/',         label: 'Início' },
+    { href: '/sobre',    label: 'Sobre' },
+    { href: '/servicos', label: 'Serviços' },
+    { href: '/blog',     label: 'Blog' },
+    { href: '/faq',      label: 'FAQ' },
+    { href: '/contato',  label: 'Contato' },
+  ],
+  en: [
+    { href: '/',         label: 'Home' },
+    { href: '/sobre',    label: 'About' },
+    { href: '/servicos', label: 'Services' },
+    { href: '/blog',     label: 'Blog' },
+    { href: '/faq',      label: 'FAQ' },
+    { href: '/contato',  label: 'Contact' },
+  ],
+};
 
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled]     = useState(false);
   const [menuOpen, setMenuOpen]     = useState(false);
+  const { language, setLanguage }   = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,17 +38,16 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const links = navLinks[language];
 
   return (
     <>
-      {/* On inner pages always show solid header; on home: transparent until scroll */}
       <header
         className={`${styles.header} ${
           pathname === '/'
@@ -59,7 +70,7 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className={styles.nav} aria-label="Navegação principal">
-            {navLinks.map((link) => (
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -69,6 +80,25 @@ export default function Header() {
               </Link>
             ))}
           </nav>
+
+          {/* Language Switcher */}
+          <div className={styles.langSwitcher}>
+            <button
+              className={`${styles.langBtn} ${language === 'pt' ? styles.langActive : ''}`}
+              onClick={() => setLanguage('pt')}
+              aria-label="Português"
+            >
+              PT
+            </button>
+            <span className={styles.langDivider}>|</span>
+            <button
+              className={`${styles.langBtn} ${language === 'en' ? styles.langActive : ''}`}
+              onClick={() => setLanguage('en')}
+              aria-label="English"
+            >
+              EN
+            </button>
+          </div>
 
           {/* Mobile Hamburger */}
           <button
@@ -89,7 +119,7 @@ export default function Header() {
         className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}
         aria-hidden={!menuOpen}
       >
-        {navLinks.map((link) => (
+        {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
@@ -99,6 +129,21 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
+        {/* Mobile Language Switcher */}
+        <div className={styles.mobileLangSwitcher}>
+          <button
+            className={`${styles.langBtn} ${language === 'pt' ? styles.langActive : ''}`}
+            onClick={() => { setLanguage('pt'); closeMenu(); }}
+          >
+            🇧🇷 Português
+          </button>
+          <button
+            className={`${styles.langBtn} ${language === 'en' ? styles.langActive : ''}`}
+            onClick={() => { setLanguage('en'); closeMenu(); }}
+          >
+            🇺🇸 English
+          </button>
+        </div>
       </div>
     </>
   );

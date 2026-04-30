@@ -5,9 +5,10 @@ export default defineType({
     title: 'Post',
     type: 'document',
     fields: [
+        // ── Portuguese (required) ───────────────────────────────────────
         defineField({
             name: 'title',
-            title: 'Título',
+            title: 'Título (PT)',
             type: 'string',
             validation: (Rule) => Rule.required(),
         }),
@@ -41,7 +42,7 @@ export default defineType({
         }),
         defineField({
             name: 'excerpt',
-            title: 'Resumo',
+            title: 'Resumo (PT)',
             type: 'text',
             rows: 3,
             description: 'Breve descrição exibida nos cards do blog.',
@@ -51,13 +52,7 @@ export default defineType({
             title: 'Imagem Principal',
             type: 'image',
             options: { hotspot: true },
-            fields: [
-                {
-                    name: 'alt',
-                    type: 'string',
-                    title: 'Texto alternativo',
-                },
-            ],
+            fields: [{ name: 'alt', type: 'string', title: 'Texto alternativo' }],
         }),
         defineField({
             name: 'author',
@@ -70,7 +65,7 @@ export default defineType({
         }),
         defineField({
             name: 'body',
-            title: 'Conteúdo',
+            title: 'Conteúdo (PT)',
             type: 'array',
             of: [
                 {
@@ -93,6 +88,50 @@ export default defineType({
                     type: 'image',
                     options: { hotspot: true },
                     fields: [{ name: 'alt', type: 'string', title: 'Texto alternativo' }],
+                },
+            ],
+        }),
+
+        // ── 🇺🇸 English Version (optional) ─────────────────────────────
+        defineField({
+            name: 'titleEn',
+            title: '🇺🇸 Title (EN)',
+            type: 'string',
+            description: 'Optional — leave blank to use the Portuguese title as fallback.',
+        }),
+        defineField({
+            name: 'excerptEn',
+            title: '🇺🇸 Excerpt (EN)',
+            type: 'text',
+            rows: 3,
+            description: 'Optional — English summary shown on blog cards when the site is in English.',
+        }),
+        defineField({
+            name: 'bodyEn',
+            title: '🇺🇸 Content (EN)',
+            type: 'array',
+            description: 'Optional — English article body. Leave blank to fall back to Portuguese.',
+            of: [
+                {
+                    type: 'block',
+                    styles: [
+                        { title: 'Normal', value: 'normal' },
+                        { title: 'H2', value: 'h2' },
+                        { title: 'H3', value: 'h3' },
+                        { title: 'H4', value: 'h4' },
+                        { title: 'Quote', value: 'blockquote' },
+                    ],
+                    marks: {
+                        decorators: [
+                            { title: 'Bold', value: 'strong' },
+                            { title: 'Italic', value: 'em' },
+                        ],
+                    },
+                },
+                {
+                    type: 'image',
+                    options: { hotspot: true },
+                    fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
                 },
             ],
         }),

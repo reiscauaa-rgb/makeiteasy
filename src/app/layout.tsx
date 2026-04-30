@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import ConditionalLayout from '@/components/ConditionalLayout/ConditionalLayout';
+import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 
 export const metadata: Metadata = {
   title: 'Make It Easy USA — Assessoria Educacional para Brasileiros',
@@ -23,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <ConditionalLayout>{children}</ConditionalLayout>
+        <LanguageProvider>
+          <ConditionalLayout>{children}</ConditionalLayout>
+        </LanguageProvider>
       </body>
     </html>
   );

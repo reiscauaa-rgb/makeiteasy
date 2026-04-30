@@ -37,6 +37,10 @@ export interface Post {
     mainImage: SanityImageSource & { alt?: string };
     author?: { name: string; photo?: SanityImageSource };
     body?: unknown[];
+    // Optional English versions
+    titleEn?: string;
+    excerptEn?: string;
+    bodyEn?: unknown[];
 }
 
 /** All posts ordered by date (list page) */
@@ -45,11 +49,11 @@ export async function getAllPosts(): Promise<Post[]> {
     return sanityClient.fetch(
         `*[_type == "post"] | order(publishedAt desc) {
       _id,
-      title,
+      title, titleEn,
       slug,
       publishedAt,
       category,
-      excerpt,
+      excerpt, excerptEn,
       mainImage,
       author
     }`
@@ -62,14 +66,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const result = await sanityClient.fetch(
         `*[_type == "post" && slug.current == $slug][0] {
       _id,
-      title,
+      title, titleEn,
       slug,
       publishedAt,
       category,
-      excerpt,
+      excerpt, excerptEn,
       mainImage,
       author,
-      body
+      body, bodyEn
     }`,
         { slug }
     );

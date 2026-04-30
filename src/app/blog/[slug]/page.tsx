@@ -9,6 +9,7 @@ import styles from './page.module.css';
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
 import { getPostBySlug, getRelatedPosts, urlFor, estimateReadTime } from '@/lib/sanity';
 import type { Post } from '@/lib/sanity';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 // ── Placeholder for the "not yet configured" state ──
 const PLACEHOLDER_POST: Post = {
@@ -192,7 +193,20 @@ export default function BlogPostPage() {
         );
     }
 
-    const readTime = post.body ? estimateReadTime(post.body as any[]) : 3;
+    const { language } = useLanguage();
+    const displayTitle   = (language === 'en' && post.titleEn)   ? post.titleEn   : post.title;
+    const displayExcerpt = (language === 'en' && post.excerptEn) ? post.excerptEn : post.excerpt;
+    const displayBody    = (language === 'en' && post.bodyEn && Array.isArray(post.bodyEn) && post.bodyEn.length > 0)
+        ? post.bodyEn
+        : post.body;
+    const readTime = displayBody ? estimateReadTime(displayBody as any[]) : 3;
+    const backLabel      = language === 'en' ? '← Back to Blog' : '← Voltar ao Blog';
+    const sidebarTitle   = language === 'en' ? 'Want to study in the U.S.?' : 'Quer estudar nos EUA?';
+    const sidebarText    = language === 'en'
+        ? 'Our advisory service is free and personalized, with guidance to find the ideal university for you.'
+        : 'Nossa assessoria é gratuita e personalizada, com orientação para encontrar a universidade ideal para você.';
+    const sidebarBtn     = language === 'en' ? 'Chat on WhatsApp' : 'Falar no WhatsApp';
+    const relatedHeading = language === 'en' ? 'Other articles you might enjoy' : 'Outros artigos que você pode gostar';
 
     return (
         <main>
@@ -203,11 +217,11 @@ export default function BlogPostPage() {
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <polyline points="15 18 9 12 15 6" />
                         </svg>
-                        Voltar ao Blog
+                        {backLabel}
                     </Link>
 
                     {post.category && <span className={styles.heroBadge}>{post.category}</span>}
-                    <h1 className={styles.heroTitle}>{post.title}</h1>
+                    <h1 className={styles.heroTitle}>{displayTitle}</h1>
 
                     <div className={styles.heroMeta}>
                         {post.author?.name && (
@@ -246,12 +260,12 @@ export default function BlogPostPage() {
             {/* ════ CONTENT ════ */}
             <div className={styles.contentWrap}>
                 <article className={styles.article}>
-                    {post.excerpt && (
-                        <p className={styles.articleExcerpt}>{post.excerpt}</p>
+                    {displayExcerpt && (
+                        <p className={styles.articleExcerpt}>{displayExcerpt}</p>
                     )}
 
-                    {post.body && Array.isArray(post.body) && (
-                        <PortableText value={post.body as any} components={ptComponents} />
+                    {displayBody && Array.isArray(displayBody) && (
+                        <PortableText value={displayBody as any} components={ptComponents} />
                     )}
 
 
@@ -260,14 +274,14 @@ export default function BlogPostPage() {
                 {/* ── Sidebar / sticky CTA ── */}
                 <aside className={styles.sidebar}>
                     <div className={styles.sidebarCard}>
-                        <h3 className={styles.sidebarTitle}>Quer estudar nos EUA?</h3>
-                        <p className={styles.sidebarText}>Nossa assessoria é gratuita e personalizada, com orientação para encontrar a universidade ideal para você.</p>
+                        <h3 className={styles.sidebarTitle}>{sidebarTitle}</h3>
+                        <p className={styles.sidebarText}>{sidebarText}</p>
                         <a
                             href="https://api.whatsapp.com/send/?phone=12023676174&text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21&type=phone_number&app_absent=0"
                             target="_blank" rel="noopener noreferrer"
                             className={styles.sidebarBtn}
                         >
-                            Falar no WhatsApp
+                            {sidebarBtn}
                         </a>
                     </div>
                 </aside>
@@ -278,7 +292,7 @@ export default function BlogPostPage() {
                 <ScrollReveal variant="fadeUp">
                     <section className={styles.relatedSection}>
                         <div className="container">
-                            <h2 className={styles.relatedHeading}>Outros artigos que você pode gostar</h2>
+                            <h2 className={styles.relatedHeading}>{relatedHeading}</h2>
                             <div className={styles.relatedGrid}>
                                 {related.map((r) => <RelatedCard key={r._id} post={r} />)}
                             </div>

@@ -7,6 +7,7 @@ import styles from './page.module.css';
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
 import { getAllPosts, getCategories, urlFor } from '@/lib/sanity';
 import type { Post } from '@/lib/sanity';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 // ── Placeholder posts shown while Sanity isn't connected ──
 const PLACEHOLDER_POSTS: Post[] = [
@@ -85,6 +86,9 @@ function estimateReadTime(post: Post): number {
 }
 
 function PostCard({ post }: { post: Post }) {
+    const { language } = useLanguage();
+    const title = (language === 'en' && post.titleEn) ? post.titleEn : post.title;
+    const excerpt = (language === 'en' && post.excerptEn) ? post.excerptEn : post.excerpt;
     const hasImage = post.mainImage;
     return (
         <Link href={`/blog/${post.slug.current}`} className={styles.card}>
@@ -107,8 +111,8 @@ function PostCard({ post }: { post: Post }) {
                 )}
             </div>
             <div className={styles.cardBody}>
-                <h2 className={styles.cardTitle}>{post.title}</h2>
-                {post.excerpt && <p className={styles.cardExcerpt}>{post.excerpt}</p>}
+                <h2 className={styles.cardTitle}>{title}</h2>
+                {excerpt && <p className={styles.cardExcerpt}>{excerpt}</p>}
                 <div className={styles.cardMeta}>
                     <span className={styles.cardReadTime}>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

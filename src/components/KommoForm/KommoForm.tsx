@@ -2,10 +2,23 @@
 
 import { useEffect, useRef } from 'react';
 import styles from './KommoForm.module.css';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
+
+const content = {
+  pt: {
+    title: 'Preencha o formulário',
+    subtitle: 'PREENCHA O FORMULÁRIO ABAIXO',
+  },
+  en: {
+    title: 'Fill out the form',
+    subtitle: 'FILL OUT THE FORM BELOW',
+  },
+};
 
 export default function KommoForm() {
   const mountRef = useRef<HTMLDivElement>(null);
-
+  const { language } = useLanguage();
+  const t = content[language];
   useEffect(() => {
     const w = window as any;
 
@@ -67,9 +80,9 @@ export default function KommoForm() {
           </svg>
         </div>
         <div className={styles.cardHeaderText}>
-          <p className={styles.cardTitle}>Preencha o formulário</p>
+          <p className={styles.cardTitle}>{t.title}</p>
           <p className={styles.cardSubtitle} style={{ fontWeight: 600, color: 'var(--color-purple-light)', letterSpacing: '0.5px' }}>
-            PREENCHA O FORMULÁRIO ABAIXO
+            {t.subtitle}
             <svg
               className={styles.animatedArrow}
               width="16"
