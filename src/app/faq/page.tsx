@@ -8,56 +8,56 @@ import ScrollReveal from '@/components/ScrollReveal/ScrollReveal';
 const allFaqs = [
   {
     q: '1. O que é a Make It Easy USA e como ajudamos você a se tornar um estudante internacional nos EUA?',
-    a: 'Somos uma assessoria gratuita que orienta em todo o processo de estudar em universidades parceiras nos EUA. Ajudamos desde a escolha do curso até o início das aulas, com suporte em português e acompanhamento individual.',
+    a: 'Somos uma assessoria gratuita que orienta em todo o processo de estudar em universidades parceiras nos EUA. Ajudamos desde a escolha do curso até o início das aulas, com suporte em português e inglês e acompanhamento individual.',
   },
   {
-    q: '2. O serviço de vocês é realmente gratuito?',
-    a: 'Sim! Nossa assessoria é totalmente gratuita. As universidades já possuem parceria conosco, então você não paga nada pelo nosso suporte.',
+    q: '2. Como funciona o atendimento de vocês durante o processo?',
+    a: 'Nosso atendimento é 100% pelo WhatsApp. Você pode enviar áudios ou mensagens com suas dúvidas, e vamos respondendo ao longo do processo. Mantemos tudo registrado para que você possa consultar as informações sempre que precisar.',
   },
   {
-    q: '3. Preciso ter inglês fluente para aplicar?',
-    a: 'Não necessariamente, mas é necessário comprovar um nível ao menos intermediário em um dos testes de proficiência em inglês como TOEFL, IELTS, Duolingo English Test e outros equivalentes.',
+    q: '3. O serviço de vocês é realmente gratuito?',
+    a: 'Sim! Nossa assessoria é gratuita. Trabalhamos em parceria com universidades, o que permite oferecer todo o suporte sem custo para você.',
   },
   {
-    q: '4. Vocês ajudam com o visto estudantil?',
-    a: 'Sim, indicamos parceiros especializados que orientam sobre o processo de visto F1 e também sobre troca de status dentro dos EUA. Valores a conferir diretamente com parceiro*.',
+    q: '4. Preciso ter inglês fluente para aplicar?',
+    a: 'Não. Você não precisa ser fluente, mas será necessário comprovar um nível mínimo de inglês por meio de exames como TOEFL, IELTS ou Duolingo English Test. A pontuação exigida varia de acordo com a universidade.',
   },
   {
-    q: '5. Quais documentos preciso preparar para aplicar?',
-    a: 'Os documentos variam conforme a universidade, mas geralmente incluem histórico escolar, diploma, tradução e comprovação financeira. Nossa equipe orienta cada etapa.',
+    q: '5. Vocês ajudam com o visto estudantil?',
+    a: 'Não realizamos processos imigratórios, mas contamos com parceiros especializados que podem orientar sobre o visto F-1 e troca de status. Valores são definidos diretamente com o parceiro.',
   },
   {
-    q: '6. Quanto tempo leva o processo de aplicação?',
-    a: 'Em média, de 2 a 6 semanas. O tempo depende da instituição e da época do ano. A Make It Easy USA acompanha tudo junto com você.',
+    q: '6. Quais documentos preciso preparar para aplicar?',
+    a: 'Os documentos variam conforme a universidade, mas geralmente incluem histórico escolar, diploma e comprovação financeira. Nossa equipe orienta você em cada etapa do processo.',
   },
   {
-    q: '7. Preciso pagar alguma taxa para a universidade?',
+    q: '7. Quanto tempo leva o processo de aplicação?',
+    a: 'O prazo depende de quanto tempo você leva para reunir e enviar os documentos. Após a aplicação, as universidades normalmente levam de 2 a 6 semanas para analisar. Por isso, recomendamos iniciar o processo com pelo menos 3 meses de antecedência, para que você tenha tempo de se organizar, receber a resposta da universidade e planejar os próximos passos.',
+  },
+  {
+    q: '8. Preciso pagar alguma taxa para a universidade?',
     a: 'Algumas universidades cobram taxa de inscrição ("application fee"), mas oferecemos descontos de até $75 em várias parcerias.',
   },
   {
-    q: '8. Posso trabalhar enquanto estudo nos EUA?',
-    a: 'Sim! Com o visto F1, é possível trabalhar dentro do campus durante os estudos e fora do campus em programas como CPT e OPT após certo tempo de estudo.',
+    q: '9. Posso trabalhar enquanto estudo nos EUA?',
+    a: 'Com o visto F-1, é possível trabalhar no campus durante os estudos. Além disso, muitas universidades oferecem oportunidades práticas relacionadas ao curso ao longo do programa (CPT), conforme regras e elegibilidade do aluno.',
   },
   {
-    q: '9. Como funciona o primeiro passo com a Make It Easy USA?',
+    q: '10. Como funciona o primeiro passo com a Make It Easy USA?',
     a: 'Você nos conta o que está buscando e analisamos juntos se temos uma universidade parceira que combina com seu perfil, seu objetivo e seu bolso. É uma conversa simples, sem compromisso.',
   },
   {
-    q: '10. Quais opções de universidades vocês apresentam?',
-    a: 'Apresentamos cursos reais, com mensalidades a partir de $7.000/ano e formato híbrido, para você poder estudar e trabalhar ao mesmo tempo nos EUA.',
+    q: '11. Quais opções de universidades vocês apresentam?',
+    a: 'Trabalhamos com universidades acessíveis, com cronogramas de aulas mais flexíveis e possibilidade de colocar em prática, no mercado de trabalho, o que é aprendido em sala (CPT), conforme regras e elegibilidade.',
   },
   {
-    q: '11. O que recebo depois de escolher uma opção?',
-    a: 'Enviamos um manual completo em português com todos os documentos necessários, prazos e o passo a passo para a aplicação na universidade escolhida.',
+    q: '12. Posso aplicar estando fora dos EUA?',
+    a: 'Sim. Você pode iniciar o processo de aplicação de qualquer lugar.',
   },
   {
-    q: '12. Como funciona o acompanhamento durante o processo?',
-    a: 'Caminhamos com você em todo o processo: ajudando com dúvidas, documentos, traduções e, se precisar, indicamos especialistas em visto de estudante.',
-  },
-  {
-    q: '13. O que acontece depois da aprovação?',
-    a: 'Com o I-20 aprovado, você aplica para o visto e se prepara para embarcar. E mesmo depois de partir, seguimos disponíveis para te apoiar no que for preciso.',
-  },
+    q: '13. Vocês garantem aprovação na universidade?',
+    a: 'Não. A decisão final é da universidade. A aprovação é discricionária, mas nós orientamos você para apresentar a melhor aplicação possível.',
+  }
 ];
 
 function FaqItemComponent({ q, a }: { q: string; a: string }) {
@@ -153,7 +153,7 @@ export default function FAQPage() {
                 rel="noopener noreferrer"
                 className={styles.ctaBtn}
               >
-                Entre em contato pelo WhatsApp
+                Entre em contato com a gente
               </a>
             </div>
           </ScrollReveal>

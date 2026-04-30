@@ -11,11 +11,6 @@ export default function FloatingActionButton() {
   const [visible, setVisible] = useState(!isHome); // always visible on other pages
 
   useEffect(() => {
-    if (!isHome) {
-      setVisible(true);
-      return;
-    }
-
     const handleScroll = () => {
       setVisible(window.scrollY > 300);
     };
@@ -24,17 +19,13 @@ export default function FloatingActionButton() {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHome]);
+  }, []);
 
   const handleClick = () => {
-    if (isHome) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      router.push('/');
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const label = isHome ? 'Voltar ao topo' : 'Voltar ao início';
+  const label = 'Voltar ao topo';
 
   return (
     <button
@@ -44,38 +35,19 @@ export default function FloatingActionButton() {
       aria-label={label}
       title={label}
     >
-      {isHome ? (
-        // Arrow Up icon
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-      ) : (
-        // Home icon
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z" />
-          <polyline points="9 21 9 12 15 12 15 21" />
-        </svg>
-      )}
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
     </button>
   );
 }

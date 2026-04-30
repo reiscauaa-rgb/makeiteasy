@@ -74,7 +74,6 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className={styles.column}>
-            <h3 className={styles.columnTitle}>Navegação</h3>
             <nav className={styles.columnLinks}>
               {navLinks.map((link) => (
                 <Link key={link.href + link.label} href={link.href} className={styles.columnLink}>

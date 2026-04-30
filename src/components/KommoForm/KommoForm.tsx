@@ -68,9 +68,23 @@ export default function KommoForm() {
         </div>
         <div className={styles.cardHeaderText}>
           <p className={styles.cardTitle}>Preencha o formulário</p>
-          <p className={styles.cardSubtitle}>
-            <span className={styles.secureDot} aria-hidden="true" />
-            Gratuito • Sem compromisso • Resposta em 24h
+          <p className={styles.cardSubtitle} style={{ fontWeight: 600, color: 'var(--color-purple-light)', letterSpacing: '0.5px' }}>
+            PREENCHA O FORMULÁRIO ABAIXO
+            <svg
+              className={styles.animatedArrow}
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ marginLeft: '6px', verticalAlign: 'middle' }}
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
           </p>
         </div>
       </div>

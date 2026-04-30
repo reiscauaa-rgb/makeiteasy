@@ -40,9 +40,9 @@ export default function ContatoPage() {
             </p>
 
             <ul className={styles.benefitsList}>
-              <li>✅ Atendimento em português</li>
-              <li>✅ Assessoria sem custo algum</li>
-              <li>✅ Do primeiro contato até o embarque</li>
+              <li>✅ Atendimento em português ou inglês</li>
+              <li>✅ Assessoria sem custo</li>
+              <li>✅ Do início ao fim do processo</li>
             </ul>
           </div>
 
