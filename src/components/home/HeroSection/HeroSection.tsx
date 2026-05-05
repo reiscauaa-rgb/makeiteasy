@@ -7,12 +7,12 @@ import { useLanguage } from '@/lib/i18n/LanguageContext';
 const content = {
   pt: {
     title: 'Estude nos EUA\nde forma Acessível',
-    subtitle: 'Assessoria gratuita e humanizada para curso superior nos EUA',
+    subtitle: 'Assessoria gratuita e humanizada\npara curso superior nos EUA',
     btnLabel: 'Iniciar conversa no WhatsApp',
   },
   en: {
     title: 'Study in the U.S.\nThe Affordable Way',
-    subtitle: 'Free, personalized guidance for higher education in the United States',
+    subtitle: 'Free, personalized guidance\nfor higher education in the United States',
     btnLabel: 'Start a conversation on WhatsApp',
   },
 };
@@ -49,7 +49,14 @@ export default function HeroSection() {
             ))}
           </h1>
 
-          <p className={styles.heroSubtitle}>{t.subtitle}</p>
+          <p className={styles.heroSubtitle}>
+            {t.subtitle.split('\n').map((line, i, arr) => (
+              <span key={i}>
+                {line}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
 
           <div className={styles.heroActions}>
             <a

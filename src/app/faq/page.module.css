@@ -319,6 +319,10 @@
   .blockB .faqList  { order: 2; }
   .blockB .photoWrap { order: 1; }
 
+  /* blockA: lista vem primeiro no mobile */
+  .blockA .faqList  { order: 1; }
+  .blockA .photoWrap { order: 2; }
+
   .heroBlobInner {
     flex-direction: column;
     text-align: center;
@@ -336,12 +340,12 @@
 
 @media (max-width: 768px) {
   .heroBlob {
-    min-height: 45vh;
-    padding-bottom: 36px;
+    min-height: 38vh;
+    padding-bottom: 28px;
   }
 
   .faqItem {
-    padding: 18px;
+    padding: 16px 18px;
   }
 
   .faqQuestion {
@@ -353,37 +357,65 @@
   }
 
   .bottomCta {
-    margin-top: 56px;
+    margin-top: 48px;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .blockA,
+  .blockB {
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 640px) {
   .heroTitle {
-    font-size: clamp(20px, 6vw, 28px);
+    font-size: clamp(22px, 7vw, 32px);
     line-height: 1.1;
   }
 
   .heroBlob {
-    padding-bottom: 28px;
-    min-height: 38vh;
+    padding-bottom: 24px;
+    min-height: 32vh;
   }
 
   .heroFloatImg {
-    max-width: 120px;
+    max-width: 110px;
   }
 
   .photoWrap {
-    max-width: 280px;
+    max-width: 260px;
     margin: 0 auto;
     aspect-ratio: 3/4;
   }
 
   .faqList {
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .faqQuestion {
+    font-size: 14px;
+  }
+
+  .blockCTitle {
+    font-size: 22px;
+  }
+
+  .pageBody {
+    padding: 48px 0 72px;
   }
 
   .ctaBtn {
-    padding: 14px 28px;
+    padding: 14px 24px;
     font-size: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .bottomCtaText {
+    font-size: 18px;
   }
 }

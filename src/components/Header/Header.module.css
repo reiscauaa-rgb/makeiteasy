@@ -163,7 +163,7 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  z-index: 1001;
+  z-index: 99999;
 }
 
 .hamburger span {
@@ -172,6 +172,7 @@
   height: 2px;
   background: var(--color-white);
   border-radius: var(--radius-full);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
   transition: transform var(--transition-base), opacity var(--transition-base);
 }
 
@@ -227,6 +228,21 @@
   .langSwitcher {
     display: none;
   }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .logoImage {
+    height: 28px;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
 }
 
 /* Language Switcher */

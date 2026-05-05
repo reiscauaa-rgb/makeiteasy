@@ -81,36 +81,38 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Language Switcher */}
-          <div className={styles.langSwitcher}>
+          <div className={styles.actions}>
+            {/* Language Switcher */}
+            <div className={styles.langSwitcher}>
+              <button
+                className={`${styles.langBtn} ${language === 'pt' ? styles.langActive : ''}`}
+                onClick={() => setLanguage('pt')}
+                aria-label="Português"
+              >
+                PT
+              </button>
+              <span className={styles.langDivider}>|</span>
+              <button
+                className={`${styles.langBtn} ${language === 'en' ? styles.langActive : ''}`}
+                onClick={() => setLanguage('en')}
+                aria-label="English"
+              >
+                EN
+              </button>
+            </div>
+
+            {/* Mobile Hamburger */}
             <button
-              className={`${styles.langBtn} ${language === 'pt' ? styles.langActive : ''}`}
-              onClick={() => setLanguage('pt')}
-              aria-label="Português"
+              className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Abrir menu"
+              aria-expanded={menuOpen}
             >
-              PT
-            </button>
-            <span className={styles.langDivider}>|</span>
-            <button
-              className={`${styles.langBtn} ${language === 'en' ? styles.langActive : ''}`}
-              onClick={() => setLanguage('en')}
-              aria-label="English"
-            >
-              EN
+              <span />
+              <span />
+              <span />
             </button>
           </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Abrir menu"
-            aria-expanded={menuOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
         </div>
       </header>
 

@@ -224,3 +224,37 @@
     display: none;
   }
 }
+
+@media (max-width: 640px) {
+  .section {
+    padding: var(--space-16) 0;
+  }
+
+  .title {
+    font-size: clamp(var(--font-size-xl), 7vw, var(--font-size-2xl));
+  }
+
+  .description {
+    font-size: var(--font-size-sm);
+  }
+
+  .whatsappBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+  }
+
+  .socialProof {
+    gap: var(--space-8);
+    padding-top: var(--space-4);
+  }
+
+  .proofNumber {
+    font-size: var(--font-size-xl);
+  }
+
+  .formIframe {
+    min-height: 420px;
+  }
+}
+

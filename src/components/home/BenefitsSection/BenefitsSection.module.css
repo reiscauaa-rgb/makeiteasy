@@ -143,7 +143,42 @@
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
   }
 }
+
+@media (max-width: 640px) {
+  .grid {
+    max-width: 100%;
+  }
+
+  .section {
+    padding: var(--space-16) 0;
+  }
+
+  .header {
+    margin-bottom: var(--space-10);
+  }
+
+  .title {
+    font-size: clamp(var(--font-size-xl), 7vw, var(--font-size-2xl));
+  }
+
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .cardImageWrap {
+    height: 260px;
+  }
+
+  .cardBody {
+    padding: var(--space-5);
+  }
+
+  .cardTitle {
+    font-size: var(--font-size-lg);
+  }
+}
+

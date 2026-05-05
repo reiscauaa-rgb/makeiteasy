@@ -24,9 +24,11 @@ const content = {
     heroTitle: 'Facilitar sua jornada.',
     story: [
       'A Make It Easy USA nasceu da vivência de quem já esteve exatamente onde você está agora: cheia de dúvidas, sonhos e vontade de estudar nos Estados Unidos, mas sem saber por onde começar.',
-      'Nossa fundadora, <strong>Giovanna</strong>, chegou aos EUA como Au Pair, em busca de novas oportunidades. Durante sua própria transição para o visto de estudante, enfrentou sozinha todos os desafios do processo: pesquisa de universidades, burocracias, documentação, tradução, testes e aquela sensação de estar sempre a um passo de errar. Mas ela não desistiu.',
-      'Depois de ser aprovada e estudar em uma universidade americana, Giovanna começou a trabalhar dentro da própria instituição, entendendo ainda mais a fundo como o sistema funciona e como <strong>ele pode ser mais acessível e menos confuso</strong> com o direcionamento certo.',
-      'Foi aí que nasceu a Make It Easy USA: uma assessoria gratuita, prática e acolhedora, feita por quem já passou pelo processo e <strong>decidiu transformar a própria experiência em ponte para outras pessoas</strong>.',
+      'Nossa fundadora, <strong>Giovanna</strong>, chegou aos EUA como Au Pair, em busca de novas oportunidades. Durante sua própria transição para o visto de estudante, enfrentou todos os desafios do processo: pesquisa de universidades, burocracias, documentação, tradução, testes e aquela sensação de estar sempre a um passo de errar. Mas ela não desistiu.',
+      'Depois de ser aprovada e iniciar seus estudos em uma universidade americana, Giovanna começou a trabalhar dentro da própria instituição. Foi nesse momento que passou a entender o processo por dentro e percebeu que, <strong>com a orientação certa, ele poderia ser muito mais simples e acessível</strong>.',
+      'Com essa visão, surgiu a vontade de criar algo maior: não trabalhar com apenas uma universidade, mas com diferentes instituições parceiras que realmente fizessem sentido para o perfil de alunos que ela um dia também foi.',
+      'Pessoas que querem estudar nos Estados Unidos, mas que buscam opções <strong>mais realistas financeiramente</strong> e que também possam <strong>abrir portas para o mercado de trabalho</strong>.',
+      'Foi assim que nasceu a Make It Easy USA: uma assessoria gratuita, prática e acolhedora, feita por quem já passou pelo processo e <strong>decidiu transformar a própria experiência em ponte para outras pessoas</strong>.',
     ],
     valuesTitle: 'O que\nacreditamos?',
     values: [

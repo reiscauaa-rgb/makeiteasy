@@ -499,19 +499,31 @@
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 260px;
-        padding-top: 5rem;
+        min-height: 280px;
+        padding-top: calc(var(--header-height) + 16px);
+        padding-bottom: 32px;
     }
 
     .heroContent {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: var(--space-4);
+        text-align: center;
+    }
+
+    .heroText {
+        align-items: center;
     }
 
     .heroTitle {
-        font-size: clamp(20px, 6vw, 28px);
+        font-size: clamp(22px, 7vw, 32px);
         line-height: 1.1;
+        margin-bottom: var(--space-3);
+    }
+
+    .heroSubtitle {
+        font-size: var(--font-size-sm);
+        max-width: 380px;
     }
 
     .filterBar {
@@ -541,5 +553,10 @@
 
     .ctaBody {
         max-width: 100%;
+    }
+
+    .ctaBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

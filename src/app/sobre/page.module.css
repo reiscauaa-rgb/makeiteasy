@@ -84,7 +84,7 @@
 /* ── Story Section ── */
 .storySection {
   background: transparent;
-  padding: 110px 0 0;
+  padding: 80px 0 0;
 }
 
 .storyGrid {
@@ -294,6 +294,7 @@
   width: fit-content;
   position: relative;
   overflow: hidden;
+  align-self: flex-start;
 }
 
 /* Ripple effect on the CTA button */
@@ -591,11 +592,23 @@
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 45vh;
-    padding-bottom: 36px;
+    min-height: auto;
+    padding-bottom: 0;
   }
 
+  .heroBgImg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 
+  .heroInner {
+    position: relative;
+    padding: 80px var(--container-pad);
+  }
 
   .reviewsGrid {
     grid-template-columns: 1fr 1fr;
@@ -616,22 +629,44 @@
   .ctaBtn {
     padding: 16px 32px;
     font-size: 15px;
+    width: 100%;
+    justify-content: center;
   }
 
   .whatsappBtn {
     padding: 14px 24px;
     font-size: 15px;
+    width: 100%;
+    justify-content: center;
+    align-self: stretch;
+  }
+
+  .storySection {
+    padding: 48px 0 0;
+  }
+
+  .valuesSection {
+    padding: 40px 0;
+  }
+
+  .proofSection {
+    padding: 0 0 56px;
   }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding-bottom: 28px;
-    min-height: 38vh;
+    min-height: auto;
+    padding-bottom: 0;
+  }
+
+  .heroInner {
+    padding: 70px var(--container-pad) 90px;
+    gap: 8px;
   }
 
   .heroTitle {
-    font-size: clamp(20px, 6vw, 28px);
+    font-size: clamp(22px, 6vw, 32px);
     line-height: 1.1;
   }
 
@@ -645,7 +680,7 @@
   }
 
   .dotDivider {
-    margin: 48px 0;
+    margin: 40px 0;
   }
 
   .storyPhotoWrap {
@@ -655,13 +690,48 @@
   .valuesItem {
     flex-direction: row;
     gap: 12px;
+    padding: 16px;
+  }
+
+  .valuesTitle {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .proofTitle {
+    font-size: 28px;
+    text-align: center;
   }
 
   .proofContent {
     gap: 16px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .proofNote {
+    text-align: center;
+  }
+
+  .proofBody {
+    text-align: center;
   }
 
   .reviewsHeader {
     margin-bottom: 24px;
+  }
+
+  .storyParagraph {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .ctaBtn,
+  .whatsappBtn {
+    font-size: 15px;
+    padding: 14px 20px;
+    width: 100%;
+    justify-content: center;
+    align-self: stretch;
   }
 }
