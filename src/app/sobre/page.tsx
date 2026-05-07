@@ -48,7 +48,9 @@ const content = {
     story: [
       'Make It Easy USA was born from the experience of someone who has been exactly where you are right now: full of questions, dreams, and a desire to study in the United States, but not knowing where to start.',
       'Our founder, <strong>Giovanna</strong>, came to the U.S. as an Au Pair, looking for new opportunities. While going through her own transition to a student visa, she faced all the challenges of the process alone: researching universities, dealing with bureaucracy, gathering documents, translations, tests, and that constant feeling of being one step away from making a mistake. But she didn\'t give up.',
-      'After being accepted and studying at an American university, Giovanna began working within the institution itself, gaining an even deeper understanding of how the system works and how <strong>it can be more accessible and less confusing</strong> with the right guidance.',
+      'After being accepted and starting her studies at an American university, Giovanna began working within the institution itself. It was then that she began to understand the process from the inside and realized that, <strong>with the right guidance, it could be much simpler and more accessible</strong>.',
+      'With this vision, the desire to create something bigger emerged: not just working with one university, but with different partner institutions that truly made sense for the profile of students she once was.',
+      'People who want to study in the United States, but who are looking for <strong>more financially realistic</strong> options that can also <strong>open doors to the job market</strong>.',
       'That\'s how Make It Easy USA was born: a free, practical, and welcoming advisory service built by someone who has been through the process and <strong>decided to turn their own experience into a bridge for others</strong>.',
     ],
     valuesTitle: 'What we\nbelieve in',
@@ -73,10 +75,13 @@ export default function SobrePage() {
     <main>
       {/* HERO */}
       <section className={styles.hero}>
-        <Image src="/images/hero-sobre-correta.png" alt="" width={1920} height={800} className={styles.heroBgImg} priority />
+        <Image src="/images/hero sobre.avif" alt="" fill className={styles.heroBgImg} priority />
         <div className={styles.heroInner}>
-          <p className={styles.heroSubtitle}>{t.heroSubtitle}</p>
-          <h1 className={styles.heroTitle}>{t.heroTitle}</h1>
+          <div className={styles.heroText}>
+            <p className={styles.heroSubtitle}>{t.heroSubtitle}</p>
+            <h1 className={styles.heroTitle}>{t.heroTitle}</h1>
+          </div>
+          <Image src="/images/hero flutuante.avif" alt="" width={220} height={220} className={styles.heroFloatImg} priority />
         </div>
       </section>
 

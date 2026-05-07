@@ -31,7 +31,7 @@ export default function HeroSection() {
           fill
           className={styles.heroBgImg}
           priority
-          quality={85}
+          unoptimized={true}
           aria-hidden="true"
         />
       </div>
