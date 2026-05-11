@@ -29,7 +29,7 @@ const content = {
         image: '/images/card direira.png',
         alt: 'Opções acessíveis para estudar nos EUA',
         title: 'Opções Acessíveis',
-        description: 'Temos cursos a partir de $7.000/ano! Assim, você consegue estudar com visto de estudante e ainda conciliar com trabalho legalmente nos EUA.',
+        description: 'Trabalhamos com programas que cabem no seu bolso e possibilitam aplicar, no mercado de trabalho, o que você aprende em sala de aula',
         accent: 'orange',
       },
     ],

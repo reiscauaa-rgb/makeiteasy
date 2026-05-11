@@ -34,7 +34,7 @@ const content = {
     heroTitle: 'Assessoria de aplicação',
     heroSubtitle: 'Na prática, oferecemos uma assessoria gratuita e completa para quem quer estudar nos EUA, sem complicações, custos abusivos ou promessas irreais. Abaixo, explicamos os principais pontos do nosso serviço:',
     finalTitle: 'E o melhor:\nvocê não paga\nnada por isso',
-    finalText: 'Nosso serviço é 100% gratuito porque é financiado pelas universidades parceiras. Você nunca será cobrado por atendimento, orientação ou apoio. Aqui, tudo é feito com transparência, cuidado e propósito.',
+    finalText: 'Nosso serviço é financiado pelas universidades parceiras, por isso não há custo para você. Oferecemos suporte com transparência, clareza e foco no seu objetivo.',
     services: [
       { title: 'Análise do seu perfil acadêmico e profissional', text: 'Começamos entendendo sua realidade, objetivos e o que você busca em um curso nos EUA. A partir disso, avaliamos opções que façam sentido para seu momento, orçamento e dentro do modelo híbrido.', image: '/images/serviço 1.avif' },
       { title: 'Apresentação de opções reais e acessíveis', text: 'Te apresentamos universidades alinhadas ao seu perfil, com valores competitivos e oportunidades de colocar em prática, no mercado de trabalho, o que você aprende durante o curso.', image: '/images/serviço 2.avif' },
