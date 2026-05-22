@@ -204,7 +204,7 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: var(--space-10) 0 var(--space-16);
+    padding: 0 0 var(--space-16);
   }
 
   .steps {
