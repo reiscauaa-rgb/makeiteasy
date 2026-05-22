@@ -1,7 +1,7 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './sanity/schemas';
-import { PreviewIFrame } from './preview';
+import { PreviewIFrame } from './sanity/preview';
 
 export default defineConfig({
     name: 'make-it-easy-blog',
