@@ -71,6 +71,7 @@ function formatDate(dateStr: string) {
 // ── Portable Text components ──
 const ptComponents = {
     block: {
+        h1: ({ children }: any) => <h1 className={styles.ptH1}>{children}</h1>,
         normal: ({ children }: any) => <p className={styles.ptP}>{children}</p>,
         h2: ({ children }: any) => <h2 className={styles.ptH2}>{children}</h2>,
         h3: ({ children }: any) => <h3 className={styles.ptH3}>{children}</h3>,
@@ -96,7 +97,7 @@ const ptComponents = {
                     height={500}
                     className={styles.ptImage}
                 />
-                {value.alt && <figcaption className={styles.ptCaption}>{value.alt}</figcaption>}
+                {value.caption && <figcaption className={styles.ptCaption}>{value.caption}</figcaption>}
             </figure>
         ),
     },
@@ -246,14 +247,21 @@ export default function BlogPostPage() {
             {/* ════ MAIN IMAGE ════ */}
             {post.mainImage && (
                 <div className={styles.mainImageWrap}>
-                    <Image
-                        src={urlFor(post.mainImage).width(1200).height(600).url()}
-                        alt={(post.mainImage as any)?.alt || post.title}
-                        width={1200}
-                        height={600}
-                        className={styles.mainImage}
-                        priority
-                    />
+                    <figure className={styles.ptFigure} style={{ margin: 0 }}>
+                        <Image
+                            src={urlFor(post.mainImage).width(1200).height(600).url()}
+                            alt={(post.mainImage as any)?.alt || post.title}
+                            width={1200}
+                            height={600}
+                            className={styles.mainImage}
+                            priority
+                        />
+                        {(post.mainImage as any)?.caption && (
+                            <figcaption className={styles.ptCaption} style={{ marginTop: '1rem' }}>
+                                {(post.mainImage as any).caption}
+                            </figcaption>
+                        )}
+                    </figure>
                 </div>
             )}
 
@@ -268,6 +276,19 @@ export default function BlogPostPage() {
                         <PortableText value={displayBody as any} components={ptComponents} />
                     )}
 
+                    {/* ── Sharebar ── */}
+                    <div className={styles.sharebar}>
+                        <span className={styles.shareLabel}>{language === 'en' ? 'Share:' : 'Compartilhe:'}</span>
+                        <button className={styles.shareWhatsApp} onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(displayTitle + ' - ' + window.location.href)}`, '_blank')}>
+                            WhatsApp
+                        </button>
+                        <button className={styles.shareBtn} onClick={() => window.open(`mailto:?subject=${encodeURIComponent(displayTitle)}&body=${encodeURIComponent('Confira este artigo: ' + window.location.href)}`, '_self')}>
+                            Email
+                        </button>
+                        <button className={styles.shareBtn} onClick={() => { navigator.clipboard.writeText(window.location.href); alert(language === 'en' ? 'Link copied!' : 'Link copiado!'); }}>
+                            {language === 'en' ? 'Copy Link' : 'Copiar Link'}
+                        </button>
+                    </div>
 
                 </article>
 

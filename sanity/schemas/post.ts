@@ -52,7 +52,10 @@ export default defineType({
             title: 'Imagem Principal',
             type: 'image',
             options: { hotspot: true },
-            fields: [{ name: 'alt', type: 'string', title: 'Texto alternativo' }],
+            fields: [
+                { name: 'alt', type: 'string', title: 'Texto alternativo (Para SEO e Acessibilidade)' },
+                { name: 'caption', type: 'string', title: 'Legenda / Descrição visível (Opcional)' }
+            ],
         }),
         defineField({
             name: 'author',
@@ -60,7 +63,13 @@ export default defineType({
             type: 'object',
             fields: [
                 { name: 'name', title: 'Nome', type: 'string' },
-                { name: 'photo', title: 'Foto', type: 'image', options: { hotspot: true } },
+                { 
+                    name: 'photo', 
+                    title: 'Foto', 
+                    type: 'image', 
+                    options: { hotspot: true },
+                    fields: [{ name: 'alt', type: 'string', title: 'Texto alternativo' }] 
+                },
             ],
         }),
         defineField({
@@ -72,6 +81,7 @@ export default defineType({
                     type: 'block',
                     styles: [
                         { title: 'Normal', value: 'normal' },
+                        { title: 'H1', value: 'h1' },
                         { title: 'H2', value: 'h2' },
                         { title: 'H3', value: 'h3' },
                         { title: 'H4', value: 'h4' },
@@ -87,7 +97,10 @@ export default defineType({
                 {
                     type: 'image',
                     options: { hotspot: true },
-                    fields: [{ name: 'alt', type: 'string', title: 'Texto alternativo' }],
+                    fields: [
+                        { name: 'alt', type: 'string', title: 'Texto alternativo (SEO)' },
+                        { name: 'caption', type: 'string', title: 'Legenda (Aparece abaixo da imagem)' }
+                    ],
                 },
             ],
         }),
@@ -116,6 +129,7 @@ export default defineType({
                     type: 'block',
                     styles: [
                         { title: 'Normal', value: 'normal' },
+                        { title: 'H1', value: 'h1' },
                         { title: 'H2', value: 'h2' },
                         { title: 'H3', value: 'h3' },
                         { title: 'H4', value: 'h4' },
@@ -131,7 +145,10 @@ export default defineType({
                 {
                     type: 'image',
                     options: { hotspot: true },
-                    fields: [{ name: 'alt', type: 'string', title: 'Alt text' }],
+                    fields: [
+                        { name: 'alt', type: 'string', title: 'Alt text (SEO)' },
+                        { name: 'caption', type: 'string', title: 'Caption (Visible description)' }
+                    ],
                 },
             ],
         }),

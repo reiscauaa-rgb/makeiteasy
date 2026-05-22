@@ -146,6 +146,14 @@
     margin-bottom: var(--space-5);
 }
 
+.ptH1 {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    color: var(--color-orange);
+    margin: var(--space-12) 0 var(--space-6);
+    line-height: 1.2;
+}
+
 .ptH2 {
     font-size: var(--font-size-2xl);
     font-weight: 800;
@@ -226,6 +234,11 @@
     flex-wrap: wrap;
 }
 
+.shareLabel {
+    font-weight: 700;
+    color: var(--color-gray-dark);
+}
+
 .shareWhatsApp {
     display: inline-flex;
     align-items: center;
@@ -243,6 +256,25 @@
 
 .shareWhatsApp:hover {
     background: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+}
+
+.shareBtn {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-gray-light);
+    color: var(--color-text);
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-base);
+}
+
+.shareBtn:hover {
+    background: var(--color-purple);
+    color: var(--color-white);
     transform: translateY(-2px);
 }
 
