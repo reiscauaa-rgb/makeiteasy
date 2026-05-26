@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
@@ -132,9 +132,7 @@ function RelatedCard({ post }: { post: Post }) {
 
 export default function BlogPostPage() {
     const params = useParams();
-    const searchParams = useSearchParams();
     const slug = typeof params?.slug === 'string' ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : '';
-    const isPreview = searchParams?.get('preview') === 'true';
     const { language } = useLanguage();
 
     const [post, setPost] = useState<Post | null>(null);
@@ -144,18 +142,24 @@ export default function BlogPostPage() {
 
     useEffect(() => {
         async function load() {
+            // Read preview flag directly from URL — avoids Next.js Suspense issues with useSearchParams
+            const isPreview = typeof window !== 'undefined'
+                && window.location.search.includes('preview=true');
+
             try {
                 let fetched: Post | null = null;
+
                 if (isPreview) {
-                    const res = await fetch(`/api/draft?slug=${slug}`);
+                    // Fetch via secure server-side API route that uses the Sanity token
+                    const res = await fetch(`/api/draft?slug=${encodeURIComponent(slug)}`);
                     if (res.ok) {
                         const data = await res.json();
-                        fetched = data.post;
+                        fetched = data.post ?? null;
                     }
                 } else {
                     fetched = await getPostBySlug(slug, false);
                 }
-                
+
                 if (fetched) {
                     setPost(fetched);
                     if (fetched.category) {
@@ -163,14 +167,14 @@ export default function BlogPostPage() {
                         setRelated(rel);
                     }
                 } else {
-                    // Sanity not configured — show placeholder for matching slugs
                     if (slug === PLACEHOLDER_POST.slug.current) {
                         setPost(PLACEHOLDER_POST);
                     } else {
                         setNotFound(true);
                     }
                 }
-            } catch {
+            } catch (err) {
+                console.error('[BlogPostPage] load error:', err);
                 if (slug === PLACEHOLDER_POST.slug.current) {
                     setPost(PLACEHOLDER_POST);
                 } else {
