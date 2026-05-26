@@ -63,24 +63,31 @@ export async function getAllPosts(): Promise<Post[]> {
     );
 }
 
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
+  _id,
+  title, titleEn,
+  slug,
+  publishedAt,
+  "category": category->title,
+  excerpt, excerptEn,
+  mainImage,
+  author,
+  body, bodyEn
+}`;
+
 /** Single post by slug (detail page) */
 export async function getPostBySlug(slug: string, isDraft = false): Promise<Post | null> {
     if (!sanityClient) return null;
-    const client = isDraft ? sanityClient.withConfig({ perspective: 'previewDrafts', useCdn: false }) : sanityClient;
-    const result = await client.fetch(
-        `*[_type == "post" && slug.current == $slug][0] {
-      _id,
-      title, titleEn,
-      slug,
-      publishedAt,
-      "category": category->title,
-      excerpt, excerptEn,
-      mainImage,
-      author,
-      body, bodyEn
-    }`,
-        { slug }
-    );
+
+    if (isDraft) {
+        // previewDrafts: returns draft if it exists, otherwise falls back to published
+        const previewClient = sanityClient.withConfig({ perspective: 'previewDrafts', useCdn: false });
+        const draft = await previewClient.fetch(POST_QUERY, { slug });
+        if (draft) return draft;
+        // If still not found (e.g. new doc not yet saved), try published
+    }
+
+    const result = await sanityClient.fetch(POST_QUERY, { slug });
     return result ?? null;
 }
 
