@@ -28,17 +28,8 @@ export default defineType({
         defineField({
             name: 'category',
             title: 'Categoria',
-            type: 'string',
-            options: {
-                list: [
-                    { title: 'Visto', value: 'Visto' },
-                    { title: 'CPT and OPT', value: 'CPT AND OPT' },
-                    { title: 'Universidades', value: 'Universidades' },
-                    { title: 'Vida nos EUA', value: 'Vida nos EUA' },
-                    { title: 'Financeiro', value: 'Financeiro' },
-                    { title: 'Dicas', value: 'Dicas' },
-                ],
-            },
+            type: 'reference',
+            to: [{ type: 'category' }],
         }),
         defineField({
             name: 'excerpt',
@@ -133,12 +124,12 @@ export default defineType({
                         { title: 'H2', value: 'h2' },
                         { title: 'H3', value: 'h3' },
                         { title: 'H4', value: 'h4' },
-                        { title: 'Quote', value: 'blockquote' },
+                        { title: 'Citação', value: 'blockquote' },
                     ],
                     marks: {
                         decorators: [
-                            { title: 'Bold', value: 'strong' },
-                            { title: 'Italic', value: 'em' },
+                            { title: 'Negrito', value: 'strong' },
+                            { title: 'Itálico', value: 'em' },
                         ],
                     },
                 },
@@ -146,8 +137,8 @@ export default defineType({
                     type: 'image',
                     options: { hotspot: true },
                     fields: [
-                        { name: 'alt', type: 'string', title: 'Alt text (SEO)' },
-                        { name: 'caption', type: 'string', title: 'Caption (Visible description)' }
+                        { name: 'alt', type: 'string', title: 'Texto alternativo (SEO)' },
+                        { name: 'caption', type: 'string', title: 'Legenda (Aparece abaixo da imagem)' }
                     ],
                 },
             ],
@@ -156,8 +147,17 @@ export default defineType({
     preview: {
         select: {
             title: 'title',
+            titleEn: 'titleEn',
             media: 'mainImage',
-            subtitle: 'category',
+            subtitle: 'category.title',
         },
+        prepare(selection) {
+            const { title, titleEn, media, subtitle } = selection;
+            return {
+                title: titleEn ? `${title} / ${titleEn}` : title,
+                subtitle: subtitle || 'Sem Categoria',
+                media: media,
+            }
+        }
     },
 });

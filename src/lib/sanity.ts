@@ -52,7 +52,7 @@ export async function getAllPosts(): Promise<Post[]> {
       title, titleEn,
       slug,
       publishedAt,
-      category,
+      "category": category->title,
       excerpt, excerptEn,
       mainImage,
       author
@@ -69,7 +69,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       title, titleEn,
       slug,
       publishedAt,
-      category,
+      "category": category->title,
       excerpt, excerptEn,
       mainImage,
       author,
@@ -84,7 +84,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 export async function getCategories(): Promise<string[]> {
     if (!sanityClient) return [];
     return sanityClient.fetch(
-        `array::unique(*[_type == "post" && defined(category)].category) | order(@ asc)`
+        `array::unique(*[_type == "post" && defined(category)].category->title) | order(@ asc)`
     );
 }
 
@@ -92,12 +92,12 @@ export async function getCategories(): Promise<string[]> {
 export async function getRelatedPosts(category: string, excludeId: string): Promise<Post[]> {
     if (!sanityClient) return [];
     return sanityClient.fetch(
-        `*[_type == "post" && category == $category && _id != $excludeId] | order(publishedAt desc)[0...3] {
+        `*[_type == "post" && category->title == $category && _id != $excludeId] | order(publishedAt desc)[0...3] {
       _id,
       title,
       slug,
       publishedAt,
-      category,
+      "category": category->title,
       excerpt,
       mainImage
     }`,

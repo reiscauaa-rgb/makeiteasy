@@ -88,18 +88,21 @@ const ptComponents = {
         ),
     },
     types: {
-        image: ({ value }: any) => (
-            <figure className={styles.ptFigure}>
-                <Image
-                    src={urlFor(value).width(900).url()}
-                    alt={value.alt || ''}
-                    width={900}
-                    height={500}
-                    className={styles.ptImage}
-                />
-                {value.caption && <figcaption className={styles.ptCaption}>{value.caption}</figcaption>}
-            </figure>
-        ),
+        image: ({ value }: any) => {
+            if (!value?.asset) return null;
+            return (
+                <figure className={styles.ptFigure}>
+                    <Image
+                        src={urlFor(value).width(900).url()}
+                        alt={value.alt || ''}
+                        width={900}
+                        height={500}
+                        className={styles.ptImage}
+                    />
+                    {value.caption && <figcaption className={styles.ptCaption}>{value.caption}</figcaption>}
+                </figure>
+            );
+        },
     },
 };
 
@@ -130,6 +133,7 @@ function RelatedCard({ post }: { post: Post }) {
 export default function BlogPostPage() {
     const params = useParams();
     const slug = typeof params?.slug === 'string' ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : '';
+    const { language } = useLanguage();
 
     const [post, setPost] = useState<Post | null>(null);
     const [related, setRelated] = useState<Post[]>([]);
@@ -194,7 +198,6 @@ export default function BlogPostPage() {
         );
     }
 
-    const { language } = useLanguage();
     const displayTitle   = (language === 'en' && post.titleEn)   ? post.titleEn   : post.title;
     const displayExcerpt = (language === 'en' && post.excerptEn) ? post.excerptEn : post.excerpt;
     const displayBody    = (language === 'en' && post.bodyEn && Array.isArray(post.bodyEn) && post.bodyEn.length > 0)
@@ -245,7 +248,7 @@ export default function BlogPostPage() {
             </section>
 
             {/* ════ MAIN IMAGE ════ */}
-            {post.mainImage && (
+            {post.mainImage && (post.mainImage as any).asset && (
                 <div className={styles.mainImageWrap}>
                     <figure className={styles.ptFigure} style={{ margin: 0 }}>
                         <Image
@@ -279,10 +282,10 @@ export default function BlogPostPage() {
                     {/* ── Sharebar ── */}
                     <div className={styles.sharebar}>
                         <span className={styles.shareLabel}>{language === 'en' ? 'Share:' : 'Compartilhe:'}</span>
-                        <button className={styles.shareWhatsApp} onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(displayTitle + ' - ' + window.location.href)}`, '_blank')}>
+                        <button className={styles.shareWhatsApp} onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent((displayTitle || '') + ' - ' + window.location.href)}`, '_blank')}>
                             WhatsApp
                         </button>
-                        <button className={styles.shareBtn} onClick={() => window.open(`mailto:?subject=${encodeURIComponent(displayTitle)}&body=${encodeURIComponent('Confira este artigo: ' + window.location.href)}`, '_self')}>
+                        <button className={styles.shareBtn} onClick={() => window.open(`mailto:?subject=${encodeURIComponent(displayTitle || '')}&body=${encodeURIComponent('Confira este artigo: ' + window.location.href)}`, '_self')}>
                             Email
                         </button>
                         <button className={styles.shareBtn} onClick={() => { navigator.clipboard.writeText(window.location.href); alert(language === 'en' ? 'Link copied!' : 'Link copiado!'); }}>
