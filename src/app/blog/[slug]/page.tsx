@@ -145,7 +145,17 @@ export default function BlogPostPage() {
     useEffect(() => {
         async function load() {
             try {
-                const fetched = await getPostBySlug(slug, isPreview);
+                let fetched: Post | null = null;
+                if (isPreview) {
+                    const res = await fetch(`/api/draft?slug=${slug}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        fetched = data.post;
+                    }
+                } else {
+                    fetched = await getPostBySlug(slug, false);
+                }
+                
                 if (fetched) {
                     setPost(fetched);
                     if (fetched.category) {
