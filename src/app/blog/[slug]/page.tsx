@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
@@ -132,7 +132,9 @@ function RelatedCard({ post }: { post: Post }) {
 
 export default function BlogPostPage() {
     const params = useParams();
+    const searchParams = useSearchParams();
     const slug = typeof params?.slug === 'string' ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : '';
+    const isPreview = searchParams?.get('preview') === 'true';
     const { language } = useLanguage();
 
     const [post, setPost] = useState<Post | null>(null);
@@ -143,7 +145,7 @@ export default function BlogPostPage() {
     useEffect(() => {
         async function load() {
             try {
-                const fetched = await getPostBySlug(slug);
+                const fetched = await getPostBySlug(slug, isPreview);
                 if (fetched) {
                     setPost(fetched);
                     if (fetched.category) {
@@ -282,7 +284,7 @@ export default function BlogPostPage() {
                     {/* ── Sharebar ── */}
                     <div className={styles.sharebar}>
                         <span className={styles.shareLabel}>{language === 'en' ? 'Share:' : 'Compartilhe:'}</span>
-                        <button className={styles.shareWhatsApp} onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent((displayTitle || '') + ' - ' + window.location.href)}`, '_blank')}>
+                        <button className={styles.shareBtn} onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent((displayTitle || '') + ' - ' + window.location.href)}`, '_blank')}>
                             WhatsApp
                         </button>
                         <button className={styles.shareBtn} onClick={() => window.open(`mailto:?subject=${encodeURIComponent(displayTitle || '')}&body=${encodeURIComponent('Confira este artigo: ' + window.location.href)}`, '_self')}>

@@ -14,8 +14,8 @@ export function PreviewIFrame(props: any) {
     }
 
     // Se estivermos em produção, poderíamos usar a URL de produção dinamicamente
-    // Aqui usamos uma rota que vai direto para a página
-    const url = `/blog/${slug}`;
+    // Aqui usamos uma rota que vai direto para a página, com flag de preview
+    const url = `/blog/${slug}?preview=true`;
 
     return (
         <div style={{ width: '100%', height: '100%', position: 'relative' }}>

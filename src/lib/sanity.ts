@@ -14,7 +14,10 @@ export const config = {
 };
 
 // Only instantiate when valid — prevents runtime crash before .env.local is set
-export const sanityClient = isSanityConfigured ? createClient(config) : null;
+export const sanityClient = isSanityConfigured ? createClient({
+    ...config,
+    token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Use token if available for drafts
+}) : null;
 
 const builder = isSanityConfigured ? createImageUrlBuilder(config) : null;
 
@@ -61,9 +64,10 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 /** Single post by slug (detail page) */
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+export async function getPostBySlug(slug: string, isDraft = false): Promise<Post | null> {
     if (!sanityClient) return null;
-    const result = await sanityClient.fetch(
+    const client = isDraft ? sanityClient.withConfig({ perspective: 'previewDrafts', useCdn: false }) : sanityClient;
+    const result = await client.fetch(
         `*[_type == "post" && slug.current == $slug][0] {
       _id,
       title, titleEn,
