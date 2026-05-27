@@ -150,13 +150,21 @@ export default function BlogPostPage() {
                 let fetched: Post | null = null;
 
                 if (isPreview) {
-                    // Fetch via secure server-side API route that uses the Sanity token
-                    const res = await fetch(`/api/draft?slug=${encodeURIComponent(slug)}`);
-                    if (res.ok) {
-                        const data = await res.json();
-                        fetched = data.post ?? null;
+                    try {
+                        const res = await fetch(`/api/draft?slug=${encodeURIComponent(slug)}`);
+                        if (res.ok) {
+                            const data = await res.json();
+                            fetched = data.post ?? null;
+                        } else {
+                            console.warn('[BlogPostPage] Draft fetch failed, falling back to published');
+                        }
+                    } catch (err) {
+                        console.warn('[BlogPostPage] Draft fetch error, falling back to published', err);
                     }
-                } else {
+                }
+                
+                // If not preview, or if preview failed/returned null, try getting the published version
+                if (!fetched) {
                     fetched = await getPostBySlug(slug, false);
                 }
 

@@ -82,12 +82,12 @@ export async function getPostBySlug(slug: string, isDraft = false): Promise<Post
     if (isDraft) {
         // previewDrafts: returns draft if it exists, otherwise falls back to published
         const previewClient = sanityClient.withConfig({ perspective: 'previewDrafts', useCdn: false });
-        const draft = await previewClient.fetch(POST_QUERY, { slug });
+        const draft = await previewClient.fetch(POST_QUERY, { slug }, { cache: 'no-store', next: { revalidate: 0 } });
         if (draft) return draft;
         // If still not found (e.g. new doc not yet saved), try published
     }
 
-    const result = await sanityClient.fetch(POST_QUERY, { slug });
+    const result = await sanityClient.fetch(POST_QUERY, { slug }, isDraft ? { cache: 'no-store' } : undefined);
     return result ?? null;
 }
 
