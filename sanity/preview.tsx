@@ -14,12 +14,14 @@ export function PreviewIFrame(props: any) {
     }
 
     // Se estivermos em produção, poderíamos usar a URL de produção dinamicamente
-    // Aqui usamos uma rota que vai direto para a página, com flag de preview
-    const url = `/blog/${slug}?preview=true`;
+    // _rev muda a cada alteração, forçando o iframe a recarregar
+    const rev = document?.displayed?._rev || '';
+    const url = `/blog/${slug}?preview=true&rev=${rev}`;
 
     return (
         <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <iframe
+                key={rev} // O React recria o iframe quando a key muda
                 src={url}
                 style={{ width: '100%', height: '100%', border: 'none' }}
                 title="Pré-visualização do Post"

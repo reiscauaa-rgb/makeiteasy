@@ -151,7 +151,7 @@ export default function BlogPostPage() {
 
                 if (isPreview) {
                     try {
-                        const res = await fetch(`/api/draft?slug=${encodeURIComponent(slug)}`);
+                        const res = await fetch(`/api/draft?slug=${encodeURIComponent(slug)}`, { cache: 'no-store' });
                         if (res.ok) {
                             const data = await res.json();
                             fetched = data.post ?? null;
