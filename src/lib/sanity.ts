@@ -14,10 +14,8 @@ export const config = {
 };
 
 // Only instantiate when valid — prevents runtime crash before .env.local is set
-export const sanityClient = isSanityConfigured ? createClient({
-    ...config,
-    token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Use token if available for drafts
-}) : null;
+// NOTE: No token here — token is only used server-side in /api/draft for security
+export const sanityClient = isSanityConfigured ? createClient(config) : null;
 
 const builder = isSanityConfigured ? createImageUrlBuilder(config) : null;
 
