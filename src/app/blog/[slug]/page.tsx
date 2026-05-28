@@ -251,12 +251,6 @@ export default function BlogPostPage() {
                     {post.category && <span className={styles.heroBadge}>{post.category}</span>}
                     <h1 className={styles.heroTitle}>{displayTitle}</h1>
 
-                    {/* DEBUG BADGE FOR PREVIEW */}
-                    {isPreview && (
-                        <div style={{ background: '#fef08a', color: '#854d0e', padding: '4px 8px', borderRadius: '4px', fontSize: '0.8rem', display: 'inline-block', fontWeight: 'bold' }}>
-                            Preview Mode Active - Token {process.env.NEXT_PUBLIC_SANITY_API_TOKEN ? 'Present' : 'Missing'}
-                        </div>
-                    )}
 
                     <div className={styles.heroMeta}>
                         {post.author?.name && (
