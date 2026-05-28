@@ -47,7 +47,8 @@ export async function GET(request: Request) {
             perspective: 'previewDrafts',
         });
 
-        const post = await previewClient.fetch(POST_QUERY, { slug });
+        const fetchOptions = { cache: 'no-store', next: { revalidate: 0 } };
+        const post = await previewClient.fetch(POST_QUERY, { slug }, fetchOptions);
 
         if (!post) {
             // Fallback: try without preview perspective (published version)
@@ -58,7 +59,7 @@ export async function GET(request: Request) {
                 useCdn: false,
                 token,
             });
-            const published = await publishedClient.fetch(POST_QUERY, { slug });
+            const published = await publishedClient.fetch(POST_QUERY, { slug }, fetchOptions);
             return NextResponse.json({ post: published, source: 'published' });
         }
 
