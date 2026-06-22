@@ -216,6 +216,31 @@
   z-index: 1;
 }
 
+/* Disclaimer */
+.disclaimerContainer {
+  padding: var(--space-6) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.disclaimerText {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.disclaimerLink {
+  color: var(--color-orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity var(--transition-fast);
+}
+
+.disclaimerLink:hover {
+  opacity: 0.8;
+}
+
 /* Bottom bar */
 .bottom {
   padding: var(--space-5) 0;

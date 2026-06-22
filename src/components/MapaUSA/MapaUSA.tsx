@@ -6,30 +6,18 @@ import styles from './MapaUSA.module.css';
 const geoUrl = '/states-10m.json';
 
 const pins: [number, number][] = [
-  [-117.82, 33.68],  // CA - Irvine
-  [-122.42, 37.77],  // CA - San Francisco
-  [-121.29, 37.95],  // CA - Stockton
-  [-73.94,  40.67],  // NY - Brooklyn
-  [-72.8,   41.5 ],  // NY - Bronx
-  [-72.1,   40.2 ],  // NY - Garden City
-  [-85.00,  41.63],  // IN - Angola
-  [-85.67,  40.10],  // IN - Anderson
-  [-90.19,  38.62],  // MO - St. Louis
-  [-95.26,  38.61],  // KS - Ottawa
-  [-112.36, 33.62],  // AZ - Surprise
-  [-88.10,  43.06],  // WI - Brookfield
-  [-76.88,  40.27],  // PA - Harrisburg
-  [-84.16,  36.74],  // KY - Williamsburg
-  [-89.2,   41.2 ],  // IL - Lisle
-  [-87.62,  41.87],  // IL - Chicago
-  [-98.5,   32.2 ],  // TX - Fort Worth
-  [-96.0,   33.3 ],  // TX - Dallas
-  [-77.03,  38.90],  // DC
-  [-78.5,   37.8 ],  // VA - Falls Church
-  [-81.37,  28.53],  // FL - Orlando
-  [-115.13, 36.16],  // NV - Las Vegas
-  [-111.65, 40.23],  // UT - Provo
-  [-75.0,   39.5 ],  // NJ - West New York
+  [-119.45, 36.78],  // California
+  [-81.37,  28.53],  // Florida
+  [-111.95, 33.45],  // Arizona
+  [-97.75,  31.97],  // Texas
+  [-77.46,  37.54],  // Virginia
+  [-74.00,  40.71],  // New York
+  [-81.03,  34.00],  // South Carolina
+  [-76.88,  40.27],  // Pennsylvania
+  [-89.40,  43.07],  // Wisconsin
+  [-95.26,  38.61],  // Kansas
+  [-77.03,  38.90],  // Washington DC
+  [-89.20,  41.88],  // Illinois
 ];
 
 export default function MapaUSA() {

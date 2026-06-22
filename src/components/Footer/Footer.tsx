@@ -8,6 +8,8 @@ import { useLanguage } from '@/lib/i18n/LanguageContext';
 const content = {
   pt: {
     tagline: 'Assessoria gratuita e humanizada para quem deseja estudar nos Estados Unidos. Do início ao fim do processo, estamos com você!',
+    disclaimer: 'Aviso Legal: A Make It Easy USA não é escritório de advocacia e não presta consultoria jurídica ou imigratória. Atuamos fazendo assessoria de estudantes para programas acadêmicos, sendo financiados pelas universidades parceiras — nossos serviços ao estudante são gratuitos. Aprovações de admissão, visto, CPT e OPT nunca são garantidas.',
+    disclaimerLinkText: 'Leia o disclaimer completo.',
     links: [
       { href: '/',         label: 'Início' },
       { href: '/sobre',    label: 'Sobre nós' },
@@ -22,6 +24,8 @@ const content = {
   },
   en: {
     tagline: 'Free, personalized advisory service for those who want to study in the United States. We\'re with you every step of the way!',
+    disclaimer: 'Legal Disclaimer: Make It Easy USA is not a law firm and does not provide legal or immigration consulting. We act as student advisors for academic programs, funded by partner universities — our student services are free. Approvals for admission, visa, CPT, and OPT are never guaranteed.',
+    disclaimerLinkText: 'Read the full disclaimer.',
     links: [
       { href: '/',         label: 'Home' },
       { href: '/sobre',    label: 'About us' },
@@ -86,6 +90,12 @@ export default function Footer() {
         </div>
 
         <hr className={styles.divider} />
+
+        <div className={styles.disclaimerContainer}>
+          <p className={styles.disclaimerText}>
+            {t.disclaimer} <Link href="/termos" className={styles.disclaimerLink}>{t.disclaimerLinkText}</Link>
+          </p>
+        </div>
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>

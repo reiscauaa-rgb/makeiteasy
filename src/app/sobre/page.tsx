@@ -81,7 +81,6 @@ export default function SobrePage() {
             <p className={styles.heroSubtitle}>{t.heroSubtitle}</p>
             <h1 className={styles.heroTitle}>{t.heroTitle}</h1>
           </div>
-          <Image src="/images/hero flutuante.avif" alt="" width={220} height={220} className={styles.heroFloatImg} priority />
         </div>
       </section>
 

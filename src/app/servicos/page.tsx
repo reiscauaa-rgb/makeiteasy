@@ -76,7 +76,6 @@ export default function ServicosPage() {
             <h1 className={styles.heroTitle} id="services-title">{t.heroTitle}</h1>
             <p className={styles.heroSubtitle}>{t.heroSubtitle}</p>
           </div>
-          <Image src="/images/hero flutuante serviços.avif" alt="" width={220} height={220} className={styles.heroFloatImg} priority />
         </div>
       </section>
 

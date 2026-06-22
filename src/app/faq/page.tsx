@@ -82,7 +82,6 @@ export default function FAQPage() {
                 <span key={i}>{line}{i === 0 && <br />}</span>
               ))}
             </h1>
-            <Image src="/images/hero faq flutuante.avif" alt="" width={220} height={220} className={styles.heroFloatImg} priority />
           </div>
         </div>
       </div>
