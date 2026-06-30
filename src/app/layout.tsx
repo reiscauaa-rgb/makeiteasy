@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import ConditionalLayout from '@/components/ConditionalLayout/ConditionalLayout';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Make It Easy USA — Assessoria Educacional para Brasileiros',
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
   },
   robots: 'index, follow',
+  verification: {
+    google: 'gfQlNxBcROxB22Z2VBjs65pibuqL6iNlWcTKFaxOKkg',
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +28,20 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
+        {/* Google Analytics (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SDP01HCGVK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SDP01HCGVK');
+          `}
+        </Script>
+
         <LanguageProvider>
           <ConditionalLayout>{children}</ConditionalLayout>
         </LanguageProvider>
