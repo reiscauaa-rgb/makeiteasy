@@ -287,6 +287,7 @@
     grid-template-rows: auto auto;
     min-height: auto;
     padding-bottom: 0;
+    padding-top: calc(var(--header-height, 70px) + 48px);
     background: #f2f2f2;
     align-items: stretch;
   }
@@ -299,19 +300,19 @@
     aspect-ratio: 16 / 9;
     background: transparent;
     z-index: 0;
-    margin-top: 48px;
+    margin-top: 0;
   }
 
   .mobileSpacer {
     display: block;
-    grid-row: 1;
-    grid-column: 1;
-    align-self: flex-start;
+    position: absolute;
+    top: var(--header-height, 70px);
+    left: 0;
     width: 100%;
     height: 48px;
     background-color: #5a1f9b;
-    margin-top: var(--header-height, 70px);
     z-index: 1;
+    margin-top: 0;
   }
 
   .heroBgImg {
@@ -327,7 +328,7 @@
     grid-row: 1;
     grid-column: 1;
     align-self: flex-start;
-    margin-top: calc(var(--header-height, 70px) + 56px);
+    margin-top: 8px;
     margin-bottom: 0;
     padding: 0 var(--container-pad);
     font-size: clamp(16px, 4.5vw, 20px);
@@ -340,7 +341,7 @@
     grid-row: 1;
     grid-column: 1;
     align-self: flex-start;
-    margin-top: calc(var(--header-height, 70px) + 100px);
+    margin-top: 52px;
     margin-bottom: 0;
     padding: 0 var(--container-pad);
     font-size: 11px;
