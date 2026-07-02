@@ -217,6 +217,14 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .header,
+  .header.transparent,
+  .header.scrolled {
+    background: #5a1f9b;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .nav {
     display: none;
   }

@@ -90,6 +90,14 @@
   line-height: 1.75;
 }
 
+.desktopText {
+  display: inline;
+}
+
+.mobileText {
+  display: none;
+}
+
 .whatsappBtn {
   display: inline-flex;
   align-items: center;
@@ -209,6 +217,14 @@
 @media (max-width: 1024px) {
   .inner {
     grid-template-columns: 1fr;
+  }
+
+  .desktopText {
+    display: none;
+  }
+
+  .mobileText {
+    display: inline;
   }
 
   .textCol {

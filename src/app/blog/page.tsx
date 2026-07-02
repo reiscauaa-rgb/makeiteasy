@@ -10,68 +10,7 @@ import type { Post } from '@/lib/sanity';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 // ── Placeholder posts shown while Sanity isn't connected ──
-const PLACEHOLDER_POSTS: Post[] = [
-    {
-        _id: '1',
-        title: 'O que é o visto F-1 e como ele funciona?',
-        slug: { current: 'o-que-e-visto-f1' },
-        publishedAt: '2024-03-10T00:00:00Z',
-        category: 'Visto',
-        excerpt: 'Entenda tudo sobre o visto de estudante F-1 e como dar o primeiro passo para estudar nos EUA.',
-        mainImage: null as any,
-        author: { name: 'Giovanna' },
-    },
-    {
-        _id: '2',
-        title: 'Entenda o CPT: tudo o que você precisa saber para trabalhar legalmente nos EUA como estudante',
-        slug: { current: 'entenda-o-cpt' },
-        publishedAt: '2024-02-20T00:00:00Z',
-        category: 'CPT AND OPT',
-        excerpt: 'O CPT (Curricular Practical Training) permite trabalhar nos EUA enquanto estuda. Saiba como funciona.',
-        mainImage: null as any,
-        author: { name: 'Giovanna' },
-    },
-    {
-        _id: '3',
-        title: 'OPT: entenda como funciona a autorização de trabalho para estudantes internacionais nos EUA',
-        slug: { current: 'entenda-o-opt' },
-        publishedAt: '2024-02-05T00:00:00Z',
-        category: 'CPT AND OPT',
-        excerpt: 'O OPT é uma extensão de trabalho após a graduação. Descubra como solicitá-la e quanto tempo dura.',
-        mainImage: null as any,
-        author: { name: 'Giovanna' },
-    },
-    {
-        _id: '4',
-        title: 'OPT Extension: como estender seu OPT por mais 24 meses',
-        slug: { current: 'opt-extension' },
-        publishedAt: '2024-01-15T00:00:00Z',
-        category: 'CPT AND OPT',
-        excerpt: 'Alunos de STEM podem estender o OPT por até 24 meses extras. Veja como fazer isso com segurança.',
-        mainImage: null as any,
-        author: { name: 'Giovanna' },
-    },
-    {
-        _id: '5',
-        title: 'Melhores universidades nos EUA para brasileiros com custo acessível',
-        slug: { current: 'melhores-universidades-eua' },
-        publishedAt: '2024-01-05T00:00:00Z',
-        category: 'Universidades',
-        excerpt: 'Existem ótimas universidades americanas com mensalidades a partir de $7.000/ano. Conheça as melhores opções.',
-        mainImage: null as any,
-        author: { name: 'Giovanna' },
-    },
-    {
-        _id: '6',
-        title: 'Como abrir conta bancária nos EUA sendo estudante internacional',
-        slug: { current: 'abrir-conta-bancaria-eua' },
-        publishedAt: '2023-12-20T00:00:00Z',
-        category: 'Vida nos EUA',
-        excerpt: 'Abrir uma conta bancária nos EUA é essencial para receber seu salário e pagar despesas. Veja o passo a passo.',
-        mainImage: null as any,
-        author: { name: 'Giovanna' },
-    },
-];
+const PLACEHOLDER_POSTS: Post[] = [];
 
 function formatDate(dateStr: string): string {
     try {

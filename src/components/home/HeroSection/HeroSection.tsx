@@ -23,6 +23,7 @@ export default function HeroSection() {
 
   return (
     <section className={styles.hero} aria-label="Seção principal">
+      <div className={styles.mobileSpacer} aria-hidden="true" />
       {/* Background Image */}
       <div className={styles.heroBg}>
         <Image

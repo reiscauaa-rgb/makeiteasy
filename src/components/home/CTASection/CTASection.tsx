@@ -10,7 +10,8 @@ const content = {
     eyebrow: 'Dê o primeiro passo',
     title: 'Quer saber como podemos te ',
     titleHighlight: 'ajudar nesse processo?',
-    description: 'Preencha o formulário ao lado e nossa equipe entra em contato em breve. O processo de orientação é 100% gratuito.',
+    descriptionDesktop: 'Preencha o formulário ao lado e nossa equipe entra em contato em breve. O processo de orientação é 100% gratuito.',
+    descriptionMobile: 'Preencha o formulário abaixo e nossa equipe entra em contato em breve. O processo de orientação é 100% gratuito.',
     btnLabel: 'Preencher Formulário',
     stats: [
       { number: '500', suffix: '+', label: 'Alunos assessorados' },
@@ -22,7 +23,8 @@ const content = {
     eyebrow: 'Take the first step',
     title: 'Want to know how we can ',
     titleHighlight: 'help you through this process?',
-    description: 'Fill out the form and our team will reach out shortly. Our advisory service is 100% free.',
+    descriptionDesktop: 'Fill out the form and our team will reach out shortly. Our advisory service is 100% free.',
+    descriptionMobile: 'Fill out the form and our team will reach out shortly. Our advisory service is 100% free.',
     btnLabel: 'Fill Out the Form',
     stats: [
       { number: '500', suffix: '+', label: 'Students advised' },
@@ -50,7 +52,10 @@ export default function CTASection() {
               <span>{t.titleHighlight}</span>
             </h2>
 
-            <p className={styles.description}>{t.description}</p>
+            <p className={styles.description}>
+              <span className={styles.desktopText}>{t.descriptionDesktop}</span>
+              <span className={styles.mobileText}>{t.descriptionMobile}</span>
+            </p>
 
             <a href="#fale-conosco" className={styles.whatsappBtn} aria-label={t.btnLabel}>
               {t.btnLabel}
