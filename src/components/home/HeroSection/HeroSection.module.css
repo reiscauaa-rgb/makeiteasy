@@ -289,7 +289,7 @@
   }
 }
 
-/* ── Mobile: hero ocupa 100vh — usuário rola para ver próxima seção ── */
+/* ── Mobile: hero ocupa 100vh — imagem começa do topo (header é fixed) ── */
 @media (max-width: 640px) {
   .hero {
     position: relative;
@@ -299,7 +299,7 @@
     align-items: center;
     min-height: 100vh;
     min-height: 100dvh; /* suporte a barra do browser mobile */
-    padding-top: calc(var(--header-height, 70px) + 20px);
+    padding-top: 0; /* header é fixed, imagem ocupa do topo */
     padding-bottom: 0;
     background: #5a1f9b;
     overflow: hidden;
@@ -327,7 +327,7 @@
     display: none;
   }
 
-  /* Conteúdo sobreposto à imagem — centralizado verticalmente na metade superior */
+  /* Conteúdo sobreposto à imagem — centralizado verticalmente */
   .heroContent {
     position: relative;
     z-index: 2;
@@ -349,7 +349,8 @@
     text-align: center;
     gap: var(--space-4);
     width: 100%;
-    padding-bottom: 10vh; /* afasta do centro absoluto, pende levemente pro topo */
+    padding-top: var(--header-height, 70px); /* empurra texto abaixo do header */
+    padding-bottom: 15vh; /* centraliza visualmente um pouco acima do meio */
   }
 
   .heroTitle {
