@@ -317,23 +317,24 @@
     z-index: 0;
   }
 
+  /* Imagem contida sem corte — respeita proporção 9:16 */
   .heroBgImg {
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .mobileSpacer {
     display: none;
   }
 
-  /* Conteúdo sobreposto à imagem */
+  /* Conteúdo sobreposto à imagem — centralizado verticalmente na metade superior */
   .heroContent {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     padding: 0 var(--container-pad);
     gap: 0;
@@ -346,29 +347,30 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     width: 100%;
+    padding-bottom: 10vh; /* afasta do centro absoluto, pende levemente pro topo */
   }
 
   .heroTitle {
-    font-size: clamp(24px, 6.5vw, 34px);
+    font-size: clamp(26px, 7vw, 36px);
     line-height: 1.2;
     text-align: center;
     color: var(--color-orange);
     margin: 0;
     padding: 0;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
   }
 
   .heroSubtitle {
-    font-size: clamp(14px, 3.8vw, 17px);
-    line-height: 1.55;
+    font-size: clamp(14px, 4vw, 17px);
+    line-height: 1.6;
     text-align: center;
     color: rgba(255, 255, 255, 0.95);
-    max-width: 320px;
+    max-width: 300px;
     margin: 0;
     padding: 0;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.35);
   }
 
   /* Botão ancorado na base da hero */
@@ -376,7 +378,7 @@
     position: relative;
     z-index: 2;
     background: transparent;
-    padding: var(--space-4) var(--container-pad) 36px;
+    padding: var(--space-4) var(--container-pad) 40px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -391,7 +393,7 @@
     border-radius: var(--radius-full);
     gap: var(--space-3);
     justify-content: center;
-    box-shadow: 0 3px 10px rgba(255, 107, 43, 0.25);
+    box-shadow: 0 4px 16px rgba(255, 107, 43, 0.4);
   }
 
   .whatsappIcon {
