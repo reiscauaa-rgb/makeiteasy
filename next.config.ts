@@ -13,19 +13,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Allow the Kommo forms iframe to load without CSP issues
+  // Headers — sem X-Frame-Options para permitir iframes externos (Kommo)
   async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-        ],
-      },
-    ];
+    return [];
   },
 };
 
