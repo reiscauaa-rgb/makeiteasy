@@ -289,7 +289,7 @@
   }
 }
 
-/* ── Mobile: hero ocupa 100vh — imagem começa do topo (header é fixed) ── */
+/* ── Mobile: hero estática, sem zoom, sem bordas ── */
 @media (max-width: 640px) {
   .hero {
     position: relative;
@@ -297,9 +297,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
-    min-height: 100dvh; /* suporte a barra do browser mobile */
-    padding-top: 0; /* header é fixed, imagem ocupa do topo */
+    /* Altura fixa usando variável CSS — evita o "zoom" quando a barra do browser some */
+    height: 100svh; /* small viewport height — não muda quando a barra some */
+    min-height: 600px; /* fallback para browsers sem suporte a svh */
+    padding-top: 0;
     padding-bottom: 0;
     background: #5a1f9b;
     overflow: hidden;
@@ -317,10 +318,12 @@
     z-index: 0;
   }
 
-  /* Imagem contida sem corte — respeita proporção 9:16 */
+  /* cover = preenche tudo sem borda, estática sem transformações */
   .heroBgImg {
-    object-fit: contain;
-    object-position: center bottom;
+    object-fit: cover;
+    object-position: center center;
+    transform: none !important;
+    will-change: auto;
   }
 
   .mobileSpacer {
