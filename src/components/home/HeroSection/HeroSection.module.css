@@ -330,14 +330,14 @@
     display: none;
   }
 
-  /* Conteúdo sobreposto à imagem — centralizado verticalmente */
+  /* Conteúdo sobreposto à imagem — alinhado mais ao topo */
   .heroContent {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Muda de center para flex-start */
     width: 100%;
     padding: 0 var(--container-pad);
     gap: 0;
@@ -352,8 +352,8 @@
     text-align: center;
     gap: var(--space-4);
     width: 100%;
-    padding-top: var(--header-height, 70px); /* empurra texto abaixo do header */
-    padding-bottom: 15vh; /* centraliza visualmente um pouco acima do meio */
+    padding-top: calc(var(--header-height, 70px) + 6vh); /* Define a altura exata abaixo do header */
+    padding-bottom: 0;
   }
 
   .heroTitle {
