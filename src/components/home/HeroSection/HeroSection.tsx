@@ -24,10 +24,23 @@ export default function HeroSection() {
   return (
     <section className={styles.hero} aria-label="Seção principal">
       <div className={styles.mobileSpacer} aria-hidden="true" />
-      {/* Background Image */}
-      <div className={styles.heroBg}>
+      {/* Background Image — Desktop */}
+      <div className={`${styles.heroBg} ${styles.heroBgDesktop}`}>
         <Image
           src="/images/hero-bg-v3.png"
+          alt=""
+          fill
+          className={styles.heroBgImg}
+          priority
+          unoptimized={true}
+          aria-hidden="true"
+        />
+      </div>
+
+      {/* Background Image — Mobile */}
+      <div className={`${styles.heroBg} ${styles.heroBgMobile}`}>
+        <Image
+          src="/images/hero-bg-mobile.png"
           alt=""
           fill
           className={styles.heroBgImg}
