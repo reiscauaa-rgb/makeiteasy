@@ -8,10 +8,12 @@ const content = {
   pt: {
     title: 'Preencha o formulário',
     subtitle: 'PREENCHA O FORMULÁRIO ABAIXO',
+    footer: 'Seus dados estão seguros e protegidos'
   },
   en: {
     title: 'Fill out the form',
     subtitle: 'FILL OUT THE FORM BELOW',
+    footer: 'Your data is safe and secure'
   },
 };
 
@@ -19,103 +21,85 @@ export default function KommoForm() {
   const mountRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
   const t = content[language];
+
   useEffect(() => {
-    const w = window as any;
+    const formId   = language === 'en' ? '1637024' : '1637020';
+    const formHash = language === 'en' ? '94a995b366cc1a813834f7e0b004feb8' : '5122c3369419979e54e267fdae0ed99e';
+    const locale   = language === 'en' ? 'en' : 'pt';
+    const w        = window as any;
+    const container = mountRef.current;
+    if (!container) return;
 
-    // 1. Set params BEFORE loading the script
-    w['amo_forms_params'] = {
-      setMeta: function (p: unknown) {
-        this.params = (this.params || []).concat([p]);
-      },
-      id: '1551255',
-      hash: '73217b5b245e1956c657964561326af6',
-      locale: 'pt',
-      dp: {},
-    };
-    w['amo_forms_load'] = w['amo_forms_load'] || function (f: unknown) {
-      (w['amo_forms_load'].f = w['amo_forms_load'].f || []).push(f);
-    };
-    w['amo_forms_loaded'] = w['amo_forms_loaded'] || function (f: unknown, k: unknown) {
-      (w['amo_forms_loaded'].f = w['amo_forms_loaded'].f || []).push([f, k]);
-    };
+    // 1. Reseta globais do Kommo completamente (sem || para garantir estado limpo)
+    delete w['amo_forms_params'];
+    delete w['amo_forms_load'];
+    delete w['amo_forms_loaded'];
 
-    // 2. Remove previous instance (hot-reload safety)
-    const prev = document.getElementById('amoforms_script_1551255');
-    if (prev) prev.remove();
-    const prevIframe = document.getElementById('amoforms_iframe_1551255');
-    if (prevIframe) prevIframe.remove();
+    // 2. Limpa DOM: remove scripts e iframes de versões anteriores
+    container.innerHTML = '';
+    ['1637020', '1637024', '1551255'].forEach(id => {
+      document.getElementById(`amoforms_iframe_${id}`)?.remove();
+    });
 
-    // 3. Append script to mount div — Kommo renders the form here
+    // 3. Script inline de inicialização — padrão IIFE exato do Kommo (Scripts 02 e 03)
+    //    DEVE estar dentro do container para o Kommo saber onde renderizar o iframe
+    const initScript = document.createElement('script');
+    initScript.textContent = `!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"${formId}",hash:"${formHash}",locale:"${locale}"}),a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])}}(window,0,"amo_forms_","params","load","loaded");`;
+    container.appendChild(initScript);
+
+    // 4. Script principal do Kommo — também dentro do container
     const script = document.createElement('script');
-    script.id = 'amoforms_script_1551255';
-    script.async = true;
+    script.id      = `amoforms_script_${formId}`;
+    script.async   = true;
     script.charset = 'utf-8';
-    script.src = '//forms.kommo.com/forms/assets/js/amoforms.js?1765486240';
+    script.src     = 'https://forms.kommo.com/forms/assets/js/amoforms.js?1765486429';
+    container.appendChild(script);
 
-    if (mountRef.current) {
-      mountRef.current.appendChild(script);
-    }
+    // 5. Listener de mensagens: reporta largura real do container ao Kommo
+    //    Kommo usa isso para decidir entre layout 1 coluna (mobile) ou 2 colunas (desktop)
+    const handleMessage = (e: MessageEvent) => {
+      try {
+        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (data.func === 'getWindowWidth' || data.func === 'getWindowWidthIsModal') {
+          const iframe = (
+            document.getElementById(`amoforms_iframe_${formId}`) ??
+            container.querySelector('iframe')
+          ) as HTMLIFrameElement | null;
+          if (iframe?.contentWindow) {
+            // Reporta a largura real do card — força Kommo a usar coluna única se < threshold
+            const width = container.clientWidth || 400;
+            iframe.contentWindow.postMessage(JSON.stringify({ parent_window_width: width }), '*');
+            // Garante que iframe preenche o container visualmente
+            iframe.style.width    = '100%';
+            iframe.style.maxWidth = '100%';
+            iframe.style.border   = 'none';
+          }
+        }
+      } catch { /* ignora erros de parse */ }
+    };
+
+    window.addEventListener('message', handleMessage);
 
     return () => {
-      script.remove();
-      const iframe = document.getElementById('amoforms_iframe_1551255');
-      if (iframe) iframe.remove();
+      window.removeEventListener('message', handleMessage);
+      container.innerHTML = '';
+      ['1637020', '1637024', '1551255'].forEach(id => {
+        document.getElementById(`amoforms_script_${id}`)?.remove();
+        document.getElementById(`amoforms_iframe_${id}`)?.remove();
+      });
     };
-  }, []);
+  }, [language]);
 
   return (
-    <div className={styles.card}>
-      {/* Animated top accent bar rendered via ::before */}
-
-      {/* Card Header */}
-      <div className={styles.cardHeader}>
-        <div className={styles.cardIconWrap} aria-hidden="true">
-          {/* Form icon */}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-        </div>
-        <div className={styles.cardHeaderText}>
-          <p className={styles.cardTitle}>{t.title}</p>
-          <p className={styles.cardSubtitle} style={{ fontWeight: 600, color: 'var(--color-purple-light)', letterSpacing: '0.5px' }}>
-            {t.subtitle}
-            <svg
-              className={styles.animatedArrow}
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginLeft: '6px', verticalAlign: 'middle' }}
-            >
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </p>
-        </div>
-      </div>
-
-      {/* Form body — Kommo script mounts here */}
-      <div className={styles.cardBody}>
-        <div ref={mountRef} className={styles.formMount} id="kommo-form-container" />
-        {/* Covers the Kommo watermark at the bottom of the iframe */}
-        <div className={styles.watermarkBlock} aria-hidden="true" />
-      </div>
-
-      {/* Card footer — trust signal */}
+    <div className={styles.wrapper}>
+      {/* O Kommo injeta seu próprio visual completo aqui — sem card wrapper em duplicidade */}
+      <div ref={mountRef} className={styles.formMount} id="kommo-form-container" />
       <div className={styles.cardFooter}>
         <p className={styles.footerText}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
           </svg>
-          Seus dados estão seguros e protegidos
+          {t.footer}
         </p>
       </div>
     </div>

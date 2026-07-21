@@ -1,31 +1,32 @@
-.card {
+/* =============================================
+   KOMMO FORM — wrapper minimalista
+   O Kommo injeta seu próprio visual completo,
+   então apenas envolvemos com borda e sombra.
+   ============================================= */
+
+.wrapper {
   position: relative;
-  background: var(--color-white);
-  border-radius: 24px;
+  width: 100%;
+  border-radius: 16px;
   overflow: hidden;
-
-  /* Premium border via gradient */
-  border: 1px solid rgba(91, 45, 166, 0.12);
-
-  /* Layered shadow for depth */
   box-shadow:
-    0 0 0 4px rgba(255, 107, 43, 0.06),
-    0 8px 32px rgba(91, 45, 166, 0.14),
-    0 32px 64px rgba(91, 45, 166, 0.08);
+    0 0 0 3px rgba(255, 107, 43, 0.08),
+    0 8px 32px rgba(91, 45, 166, 0.18);
 }
 
-/* Top accent bar */
-.card::before {
+/* Shimmer top accent */
+.wrapper::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--color-orange), var(--color-purple-light), var(--color-orange));
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
-  z-index: 2;
+  z-index: 10;
+  pointer-events: none;
 }
 
 @keyframes shimmer {
@@ -33,126 +34,40 @@
   100% { background-position: -200% 0; }
 }
 
-/* Card header */
-.cardHeader {
-  padding: var(--space-2) var(--space-5);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  border-bottom: 1px solid rgba(91, 45, 166, 0.07);
-  background: linear-gradient(135deg, #fafafa 0%, #f5f0ff 100%);
+/* Mount point — o script do Kommo injeta o iframe aqui */
+.formMount {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
-.cardIconWrap {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--color-orange), #ff9a5c);
+.formMount :global(iframe) {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: unset !important;
+  border: none !important;
+}
+
+/* Footer de confiança */
+.cardFooter {
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(255, 107, 43, 0.25);
+  background: #fafafa;
+  border-top: 1px solid rgba(91, 45, 166, 0.08);
 }
 
-.cardHeaderText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.cardTitle {
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-  color: var(--color-purple-dark);
-  line-height: 1.2;
-}
-
-.cardSubtitle {
+.footerText {
   font-size: 11px;
   color: var(--color-gray);
   display: flex;
   align-items: center;
-  gap: 4px;
-}
-
-.secureDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #22c55e;
-  display: inline-block;
-}
-
-/* Form body */
-.cardBody {
-  padding: var(--space-2) var(--space-5) 0;
-  position: relative;
-}
-
-/* The Kommo script injects an iframe — make it fill the card */
-.cardBody :global(#amoforms_iframe_1551255) {
-  width: 100% !important;
-  max-width: 100% !important;
-  border: none !important;
-  display: block !important;
-}
-
-/* Watermark overlay — covers the last ~36px of the iframe */
-.watermarkBlock {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 38px;
-  background: var(--color-white);
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* Card footer */
-.cardFooter {
-  padding: 6px var(--space-5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  background: #fafafa;
-  border-top: 1px solid rgba(91, 45, 166, 0.06);
-}
-
-.footerText {
-  font-size: var(--font-size-xs);
-  color: var(--color-gray);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
+  gap: 6px;
 }
 
 .footerText svg {
   color: #22c55e;
   flex-shrink: 0;
-}
-
-/* Wrapper for the script injection */
-.formMount {
-  min-height: 280px;
-  position: relative;
-}
-
-/* Animated downward arrow */
-.animatedArrow {
-  animation: bounceDown 1.5s infinite;
-}
-
-@keyframes bounceDown {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-4px);
-  }
-  60% {
-    transform: translateY(-2px);
-  }
 }

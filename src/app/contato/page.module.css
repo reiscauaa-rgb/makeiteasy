@@ -52,8 +52,8 @@
   margin: 0 auto;
   padding: calc(var(--header-height) + 20px) var(--container-pad) 100px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr 2fr; /* form recebe 2/3 do espaço (~700px) */
+  gap: 48px;
   align-items: center;
 }
 
@@ -143,7 +143,7 @@
 
 .formCard {
   width: 100%;
-  max-width: 380px; /* Reduced further to 380px for a more compact design */
+  max-width: 100%; /* deixa o Kommo usar todo o espaço disponível da coluna */
   padding: 0;
 }
 
